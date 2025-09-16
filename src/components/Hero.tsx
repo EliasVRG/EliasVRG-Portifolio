@@ -38,14 +38,16 @@ const Hero = () => {
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
             Desenvolvedor Full Stack especializado em{' '}
             <span className="text-primary font-semibold">React</span>,{' '}
-            <span className="text-accent font-semibold">Python</span> e{' '}
+            <span className="text-accent font-semibold">PHP</span>,{' '}
+            <span className="text-primary font-semibold">Python</span>,{' '}
+            <span className="text-accent font-semibold">Oracle</span> e{' '}
             <span className="text-primary font-semibold">PostgreSQL</span>.
             Criando experiências digitais excepcionais.
           </p>
 
           {/* Tech Pills */}
           <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {['React.js', 'Python', 'TypeScript', 'PostgreSQL', 'PHP', 'Node.js'].map((tech) => (
+            {['React.js', 'PHP', 'Python', 'JavaScript', 'TypeScript', 'PostgreSQL', 'Oracle'].map((tech) => (
               <span
                 key={tech}
                 className="px-4 py-2 bg-secondary/50 backdrop-blur-sm rounded-full text-sm font-medium text-secondary-foreground border border-border/30 hover:border-primary/50 transition-colors"

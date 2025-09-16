@@ -2,7 +2,6 @@ import {
   Code2, 
   Database, 
   Globe, 
-  Smartphone, 
   Server,
   Palette,
   Zap,
@@ -17,18 +16,23 @@ const About = () => {
   const skills = [
     { icon: Code2, name: 'React.js', color: 'text-accent' },
     { icon: Server, name: 'Python', color: 'text-primary' },
+    { icon: Code2, name: 'Flask', color: 'text-accent' },
+    { icon: Code2, name: 'Django', color: 'text-primary' },
+    { icon: Server, name: 'Php', color: 'text-accent' },
+    { icon: Globe, name: 'JavaScript', color: 'text-primary' },
     { icon: Globe, name: 'TypeScript', color: 'text-accent' },
     { icon: Database, name: 'PostgreSQL', color: 'text-primary' },
-    { icon: Code2, name: 'PHP', color: 'text-accent' },
-    { icon: Server, name: 'Node.js', color: 'text-primary' },
-    { icon: Smartphone, name: 'React Native', color: 'text-accent' },
-    { icon: Palette, name: 'Tailwind CSS', color: 'text-primary' },
+    { icon: Database, name: 'Oracle', color: 'text-accent' },
+    { icon: Database, name: 'MySQL', color: 'text-primary' },
+    { icon: Palette, name: 'Tailwind CSS', color: 'text-accent' },
+    { icon: Palette, name: 'Bootstrap 5', color: 'text-primary' },
+    { icon: Palette, name: 'Sass', color: 'text-accent' },
   ];
 
   const stats = [
     { icon: Trophy, value: '2+', label: 'Anos de Experiência' },
     { icon: Code2, value: '15+', label: 'Projetos Concluídos' },
-    { icon: Zap, value: '8+', label: 'Tecnologias Dominadas' },
+    { icon: Zap, value: '10+', label: 'Tecnologias Dominadas' },
   ];
 
   return (
@@ -54,19 +58,23 @@ const About = () => {
                 <p>
                   Sou um desenvolvedor full stack com mais de 2 anos de experiência, 
                   especializado em criar soluções web modernas e eficientes. Minha jornada 
-                  começou com curiosidade e se transformou em paixão por resolver problemas 
-                  complexos através do código.
+                  começou com curiosidade e evoluiu para uma verdadeira paixão por resolver 
+                  problemas complexos através do código.
                 </p>
                 <p>
-                  Trabalho principalmente com <span className="text-primary font-semibold">React.js</span> no 
-                  frontend e <span className="text-accent font-semibold">Python</span> no backend, 
-                  sempre buscando as melhores práticas e tecnologias mais recentes para 
-                  entregar produtos de alta qualidade.
+                  Atuo principalmente com <span className="text-primary font-semibold">React.js</span> no frontend e 
+                  <span className="text-accent font-semibold"> Python</span> no backend, incluindo automações e RPA. 
+                  Também possuo experiência com <span className="text-accent font-semibold">PHP</span>, 
+                  <span className="text-primary font-semibold"> Bootstrap 5</span>, 
+                  <span className="text-accent font-semibold"> Tailwind CSS</span>, 
+                  <span className="text-primary font-semibold"> JavaScript</span> e um pouco de 
+                  <span className="text-accent font-semibold"> TypeScript</span>.
                 </p>
                 <p>
-                  Acredito que a tecnologia deve ser acessível e intuitiva. Por isso, 
-                  foco em criar interfaces que proporcionem uma excelente experiência 
-                  do usuário, combinada com arquiteturas robustas e escaláveis.
+                  Busco sempre aplicar as melhores práticas e explorar tecnologias atuais para 
+                  entregar produtos de alta qualidade. Acredito que a tecnologia deve ser acessível 
+                  e intuitiva, por isso foco em desenvolver interfaces que proporcionem uma ótima 
+                  experiência ao usuário, aliadas a arquiteturas robustas e escaláveis.
                 </p>
               </div>
             </div>

@@ -42,7 +42,7 @@ const Header = () => {
               <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-20 animate-pulse"></div>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">João Silva</h1>
+              <h1 className="text-xl font-bold text-foreground">Elias Victor</h1>
               <p className="text-sm text-muted-foreground">Full Stack Developer</p>
             </div>
           </div>
@@ -71,7 +71,7 @@ const Header = () => {
             {/* Social Links */}
             <div className="flex items-center space-x-3">
               <a
-                href="https://github.com"
+                href="https://github.com/EliasVRG"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors hover-glow p-2 rounded-lg"
@@ -79,7 +79,7 @@ const Header = () => {
                 <Github size={20} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/elias-victor-rocha-garcia-00243521b/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors hover-glow p-2 rounded-lg"
@@ -123,7 +123,7 @@ const Header = () => {
               
               <div className="flex items-center space-x-4 pt-4 border-t border-border">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/EliasVRG"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
@@ -131,7 +131,7 @@ const Header = () => {
                   <Github size={20} />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/elias-victor-rocha-garcia-00243521b/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
