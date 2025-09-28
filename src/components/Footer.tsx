@@ -29,11 +29,11 @@ const Footer = () => {
               <Heart className="w-4 h-4 text-red-500 animate-pulse" />
               <span>e</span>
               <Code className="w-4 h-4 text-primary" />
-              <span>por João Silva</span>
+              <span>por Elias Victor Rocha Garcia</span>
             </div>
             
             <div className="text-sm text-muted-foreground">
-              <p>© {new Date().getFullYear()} João Silva. Todos os direitos reservados.</p>
+              <p>© {new Date().getFullYear()} Elias Victor Rocha Garcia. Todos os direitos reservados.</p>
               <p className="mt-2">
                 Feito com React.js, TypeScript e Tailwind CSS
               </p>

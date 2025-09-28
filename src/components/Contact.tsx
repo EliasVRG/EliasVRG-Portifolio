@@ -17,8 +17,8 @@ const Contact = () => {
       icon: MessageCircle,
       title: 'WhatsApp',
       subtitle: 'Vamos conversar!',
-      value: '+55 (11) 99999-9999',
-      link: 'https://wa.me/5511999999999',
+      value: '+55 (44) 99710-8065',
+      link: 'https://wa.me/5544997108065',
       color: 'text-green-500',
       bgColor: 'bg-green-500/10'
     },
@@ -26,15 +26,15 @@ const Contact = () => {
       icon: Mail,
       title: 'Email',
       subtitle: 'Para contato profissional',
-      value: 'joao@exemplo.com',
-      link: 'mailto:joao@exemplo.com',
+      value: 'eliasvictor2452gmail.com',
+      link: 'mailto:eliasvictor2452gmail.com',
       color: 'text-accent',
       bgColor: 'bg-accent/10'
     },
     {
       icon: MapPin,
       title: 'Localização',
-      subtitle: 'São Paulo, Brasil',
+      subtitle: 'Maringá-PR, Brasil',
       value: 'Disponível para remoto',
       color: 'text-primary',
       bgColor: 'bg-primary/10'
@@ -42,8 +42,8 @@ const Contact = () => {
     {
       icon: Clock,
       title: 'Disponibilidade',
-      subtitle: 'Seg - Sex',
-      value: '08:00 - 18:00',
+      subtitle: 'Seg - Sab',
+      value: '08:00 - 22:00',
       color: 'text-orange-500',
       bgColor: 'bg-orange-500/10'
     }
@@ -53,22 +53,22 @@ const Contact = () => {
     {
       icon: Github,
       name: 'GitHub',
-      username: '@joaosilva',
-      url: 'https://github.com',
+      username: 'EliasVRG',
+      url: 'https://github.com/EliasVRG',
       color: 'text-foreground hover:text-primary'
     },
     {
       icon: Linkedin,
       name: 'LinkedIn',
-      username: 'João Silva',
-      url: 'https://linkedin.com',
+      username: 'Elias Victor Rocha Garcia',
+      url: 'https://www.linkedin.com/in/elias-victor-rocha-garcia-00243521b/',
       color: 'text-blue-500 hover:text-blue-400'
     },
     {
       icon: Instagram,
       name: 'Instagram',
-      username: '@joao.dev',
-      url: 'https://instagram.com',
+      username: '@elias_victor__',
+      url: 'https://www.instagram.com/elias_victor__',
       color: 'text-pink-500 hover:text-pink-400'
     }
   ];
@@ -184,7 +184,7 @@ const Contact = () => {
                         asChild
                       >
                         <a 
-                          href="https://wa.me/5511999999999?text=Olá! Vi seu portfólio e gostaria de conversar sobre um projeto."
+                          href="https://wa.me/5544997108065?text=Olá! Vi seu portfólio e gostaria de conversar sobre um projeto."
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center"
@@ -201,7 +201,7 @@ const Contact = () => {
                         asChild
                       >
                         <a 
-                          href="mailto:joao@exemplo.com?subject=Proposta de Projeto&body=Olá João, vi seu portfólio e gostaria de discutir um projeto."
+                          href="mailto:eliasvictor2452@gmail.com?subject=Proposta de Projeto&body=Olá Elias, vi seu portfólio e gostaria de discutir um projeto."
                           className="flex items-center justify-center"
                         >
                           <Mail className="w-5 h-5 mr-2" />

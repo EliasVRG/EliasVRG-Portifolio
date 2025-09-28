@@ -3,58 +3,96 @@ import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import projectPreview from '../assets/project-preview-1.jpg';
+import projectPreview2 from '../assets/project-preview-2.jpg';
 
 const Projects = () => {
   const projects = [
+    // {
+    //   title: 'E-commerce Moderno',
+    //   description: 'Plataforma completa de e-commerce desenvolvida com React.js e Python Django. Sistema de pagamentos, gestão de produtos e painel administrativo.',
+    //   image: projectPreview,
+    //   tags: ['React.js', 'Python', 'Django', 'PostgreSQL', 'Stripe'],
+    //   type: 'empresa',
+    //   github: 'https://github.com',
+    //   demo: 'https://example.com',
+    //   featured: true
+    // },
+    // {
+    //   title: 'Dashboard Analytics',
+    //   description: 'Sistema de análise de dados em tempo real para empresas. Integração com múltiplas APIs e visualizações interativas.',
+    //   tags: ['React.js', 'Node.js', 'MongoDB', 'Socket.io'],
+    //   type: 'empresa',
+    //   github: 'https://github.com',
+    //   demo: 'https://example.com'
+    // },
+    // {
+    //   title: 'App Mobile Delivery',
+    //   description: 'Aplicativo de delivery desenvolvido com React Native. GPS tracking, pagamentos online e sistema de avaliações.',
+    //   tags: ['React Native', 'Firebase', 'Node.js', 'Express'],
+    //   type: 'freelance',
+    //   github: 'https://github.com',
+    //   demo: 'https://example.com'
+    // },
+    // {
+    //   title: 'Sistema de Gestão Hospitalar',
+    //   description: 'Plataforma web para gestão de pacientes, médicos e consultas. Desenvolvido durante estágio na empresa TechHealth.',
+    //   tags: ['PHP', 'Laravel', 'MySQL', 'Bootstrap'],
+    //   type: 'empresa',
+    //   github: 'https://github.com',
+    //   company: 'TechHealth'
+    // },
+    // {
+    //   title: 'Portfolio Pessoal',
+    //   description: 'Site portfolio responsivo criado com React.js e Tailwind CSS. Design moderno e animações suaves.',
+    //   tags: ['React.js', 'Tailwind CSS', 'Framer Motion'],
+    //   type: 'pessoal',
+    //   github: 'https://github.com',
+    //   demo: 'https://example.com'
+    // },
+    // {
+    //   title: 'API REST Microserviços',
+    //   description: 'Arquitetura de microserviços em Python com FastAPI. Sistema de autenticação JWT e documentação automática.',
+    //   tags: ['Python', 'FastAPI', 'Docker', 'PostgreSQL'],
+    //   type: 'pessoal',
+    //   github: 'https://github.com'
+    // },
     {
-      title: 'E-commerce Moderno',
-      description: 'Plataforma completa de e-commerce desenvolvida com React.js e Python Django. Sistema de pagamentos, gestão de produtos e painel administrativo.',
+      title: 'LoadStay',
+      description: 'Plataforma SaaS para gestão de estadias voltada a pequenas e médias empresas, substituindo planilhas por um sistema seguro e escalável. Permite cadastro de clientes com diferentes planos de assinatura, controle detalhado de estadias com documentos anexados, filtros avançados, gestão de usuários por administradores e integração com pagamentos online.',
       image: projectPreview,
-      tags: ['React.js', 'Python', 'Django', 'PostgreSQL', 'Stripe'],
-      type: 'empresa',
-      github: 'https://github.com',
-      demo: 'https://example.com',
+      tags: ['React.js', 'TypeScript', 'PHP', 'Laravel', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
+      type: 'pessoal',
       featured: true
     },
     {
-      title: 'Dashboard Analytics',
-      description: 'Sistema de análise de dados em tempo real para empresas. Integração com múltiplas APIs e visualizações interativas.',
-      tags: ['React.js', 'Node.js', 'MongoDB', 'Socket.io'],
+      title: 'RPA para Guias de ICMS',
+      description: 'Desenvolvimento de um Robotic Process Automation (RPA) em Python para automatizar a leitura de guias de ICMS em pastas monitoradas e realizar a inserção estruturada dos dados no ERP da empresa, reduzindo erros manuais e aumentando a eficiência operacional.',
+      tags: ['Python', 'Pandas', 'Openpyxl', 'PyAutoGUI', 'Automação'],
       type: 'empresa',
-      github: 'https://github.com',
-      demo: 'https://example.com'
+      company: 'Transpanorama'
     },
     {
-      title: 'App Mobile Delivery',
-      description: 'Aplicativo de delivery desenvolvido com React Native. GPS tracking, pagamentos online e sistema de avaliações.',
-      tags: ['React Native', 'Firebase', 'Node.js', 'Express'],
-      type: 'freelance',
-      github: 'https://github.com',
-      demo: 'https://example.com'
-    },
-    {
-      title: 'Sistema de Gestão Hospitalar',
-      description: 'Plataforma web para gestão de pacientes, médicos e consultas. Desenvolvido durante estágio na empresa TechHealth.',
-      tags: ['PHP', 'Laravel', 'MySQL', 'Bootstrap'],
+      title: 'RPA para Faturamento',
+      description: 'Desenvolvimento de um Robotic Process Automation (RPA) em Python para automatizar a coleta de contas a pagar de um cliente, registrar os dados no sistema e gerar automaticamente relatórios de faturamento enviados por e-mail, reduzindo esforço manual e aumentando a confiabilidade das informações.',
+      tags: ['Python', 'Pandas', 'Openpyxl', 'PyAutoGUI', 'Playwright', 'Smtplib', 'Automação'],
       type: 'empresa',
-      github: 'https://github.com',
-      company: 'TechHealth'
+      company: 'Transpanorama'
     },
     {
-      title: 'Portfolio Pessoal',
-      description: 'Site portfolio responsivo criado com React.js e Tailwind CSS. Design moderno e animações suaves.',
-      tags: ['React.js', 'Tailwind CSS', 'Framer Motion'],
+      title: 'ReuniOn',
+      description: 'Sistema de automação que integra WhatsApp e Google Calendar para envio de agendas diárias, criação e edição de eventos por mensagens e sincronização automática. Possui webhook para atualizações, autenticação segura via Google OAuth, deploy simplificado em Vercel (com agendamento via Vercel Cron) e foco em baixo custo de operação.',
+      image: projectPreview2,
+      tags: ['Python', 'Flask', 'Google Calendar API', 'WhatsApp Cloud API', 'Vercel', 'Docker'],
       type: 'pessoal',
-      github: 'https://github.com',
-      demo: 'https://example.com'
+      featured: true
     },
     {
-      title: 'API REST Microserviços',
-      description: 'Arquitetura de microserviços em Python com FastAPI. Sistema de autenticação JWT e documentação automática.',
-      tags: ['Python', 'FastAPI', 'Docker', 'PostgreSQL'],
-      type: 'pessoal',
-      github: 'https://github.com'
-    }
+      title: 'Tracker de Carga',
+      description: 'Desenvolvimento de um sistema web para clientes da transportadora acompanharem suas entregas em tempo real, com funcionalidades de monitoramento de carga, gestão de ocorrências e rastreamento de placas com problemas, garantindo maior transparência e agilidade logística.',
+      tags: ['Python', 'Flask', 'MySQL', 'Jinja', 'Bootstrap', 'API REST'],
+      type: 'empresa',
+      company: 'Transpanorama'
+    },
   ];
 
   const getTypeIcon = (type: string) => {
@@ -219,7 +257,7 @@ const Projects = () => {
               asChild
             >
               <a 
-                href="https://github.com" 
+                href="https://github.com/EliasVRG?tab=repositories" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center"
