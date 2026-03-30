@@ -1,55 +1,40 @@
-import { Heart, Code, Rocket } from 'lucide-react';
-
 const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-6 py-12">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Motivational Quote */}
-          <div className="mb-8 animate-fade-in">
-            <div className="inline-flex items-center space-x-2 mb-4">
-              <Rocket className="w-6 h-6 text-primary animate-float" />
-            </div>
-            <blockquote className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-relaxed">
-              "Cada linha de código é um passo em direção ao{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-primary">futuro</span>"
-            </blockquote>
-            <p className="text-muted-foreground italic">
-              Transformando desafios em oportunidades, uma solução por vez.
-            </p>
-          </div>
+    <footer className="border-t-4 border-white bg-[var(--bg)]">
+      {/* Marquee */}
+      <div className="overflow-hidden border-b-[3px] border-white/10 py-4">
+        <div className="marquee-track">
+          {Array.from({ length: 2 }).map((_, i) => (
+            <span
+              key={i}
+              className="font-brutal text-[clamp(1rem,2vw,1.5rem)] text-white/10 whitespace-nowrap mr-12"
+            >
+              SYSTEMS OVER INTERFACES • CLEAN CODE IS TABLE STAKES • BUILD WHAT MATTERS • SHIP OR SHUT UP • AUTOMATE EVERYTHING • ZERO TOLERANCE FOR BROKEN DEPLOYS •{' '}
+            </span>
+          ))}
+        </div>
+      </div>
 
-          {/* Divider */}
-          <div className="w-20 h-1 bg-gradient-primary mx-auto rounded-full mb-8"></div>
-
-          {/* Footer Content */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-center space-x-2 text-muted-foreground">
-              <span>Desenvolvido com</span>
-              <Heart className="w-4 h-4 text-red-500 animate-pulse" />
-              <span>e</span>
-              <Code className="w-4 h-4 text-primary" />
-              <span>por Elias Victor Rocha Garcia</span>
+      <div className="px-[5vw] py-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          {/* Left */}
+          <div>
+            <div className="font-mono-brutal text-sm font-bold tracking-[3px] text-white mb-2">
+              ELIAS<span className="text-[var(--primary)]"> //</span> DEV
             </div>
-            
-            <div className="text-sm text-muted-foreground">
-              <p>© {new Date().getFullYear()} Elias Victor Rocha Garcia. Todos os direitos reservados.</p>
-              <p className="mt-2">
-                Feito com React.js, TypeScript e Tailwind CSS
-              </p>
+            <div className="font-mono-brutal text-xs text-[var(--gray)] tracking-[1px]">
+              © {new Date().getFullYear()} ELIAS VICTOR ROCHA GARCIA
             </div>
           </div>
 
-          {/* Tech Stack Pills */}
-          <div className="flex flex-wrap justify-center gap-2 mt-6">
-            {['React.js', 'TypeScript', 'Tailwind CSS', 'Vite'].map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 bg-muted/50 rounded-full text-xs text-muted-foreground border border-border/30"
-              >
-                {tech}
-              </span>
-            ))}
+          {/* Right */}
+          <div className="font-mono-brutal text-xs text-[var(--gray)] tracking-[1px] text-right">
+            <div>
+              BUILT WITH <span className="text-[var(--primary)]">REACT</span> + <span className="text-[var(--accent)]">TYPESCRIPT</span> + <span className="text-white">VITE</span>
+            </div>
+            <div className="mt-1">
+              DESIGNED TO <span className="text-[var(--primary)]">INTIMIDATE</span>
+            </div>
           </div>
         </div>
       </div>

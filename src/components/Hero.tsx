@@ -1,92 +1,125 @@
-import { ArrowDown, Code, Sparkles } from 'lucide-react';
-import { Button } from './ui/button';
+import { useEffect, useRef } from 'react';
 
 const Hero = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!heroRef.current) return;
+      const rect = heroRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
+      const outline = heroRef.current.querySelector('.hero-outline') as HTMLElement;
+      if (outline) {
+        outline.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    };
+
+    const hero = heroRef.current;
+    hero?.addEventListener('mousemove', handleMouseMove);
+    return () => hero?.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   return (
-    <section className="min-h-screen hero-gradient flex items-center justify-center relative overflow-hidden">
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full animate-float"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-accent/10 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-40 left-1/4 w-12 h-12 bg-primary/20 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+    <section
+      ref={heroRef}
+      className="min-h-screen flex items-center relative overflow-hidden scanline"
+      style={{ padding: '0 5vw' }}
+    >
+      {/* Background decorative elements */}
+      <div className="absolute top-[15vh] right-[5vw] font-mono-brutal text-[12vw] font-bold text-white/[0.02] leading-none select-none pointer-events-none">
+        DEV<br/>OPS<br/>SYS
       </div>
 
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="max-w-4xl mx-auto animate-fade-in">
-          {/* Greeting */}
-          <div className="inline-flex items-center space-x-2 bg-card/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-border/30">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Olá! Bem-vindo ao meu portfolio</span>
-          </div>
+      {/* Decorative line number gutter */}
+      <div className="absolute left-[2vw] top-[30vh] font-mono-brutal text-xs text-white/10 leading-[2.2] select-none pointer-events-none hidden lg:block">
+        {Array.from({ length: 12 }, (_, i) => (
+          <div key={i}>{String(i + 1).padStart(3, '0')}</div>
+        ))}
+      </div>
 
-          {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
-            Transformo
-            <span className="text-transparent bg-clip-text bg-gradient-primary block">
-              Ideias em Código
+      <div className="relative z-10 max-w-[90vw]">
+        {/* Small label */}
+        <div className="font-mono-brutal text-xs tracking-[4px] text-[var(--gray)] mb-8 flex items-center gap-3">
+          <span className="w-8 h-[2px] bg-[var(--primary)] inline-block" />
+          BACKEND & FULLSTACK DEVELOPER
+        </div>
+
+        {/* Main heading — huge, overlapping, asymmetric */}
+        <div className="relative">
+          <h1 className="font-brutal leading-[0.82]" style={{ fontSize: 'clamp(3rem, 11vw, 12rem)' }}>
+            <span className="block text-white">I BUILD</span>
+            <span className="block text-[var(--primary)] relative">
+              SYSTEMS
+              {/* Ghost outline text */}
+              <span
+                className="hero-outline absolute top-0 left-0 text-transparent pointer-events-none"
+                style={{
+                  WebkitTextStroke: '1px rgba(255,214,10,0.3)',
+                  transform: 'translate(5px, 5px)',
+                  transition: 'transform 0.05s steps(2)',
+                }}
+                aria-hidden="true"
+              >
+                SYSTEMS
+              </span>
+            </span>
+            <span className="block text-white">
+              THAT <span className="text-[var(--accent)]">WORK</span>
             </span>
           </h1>
-
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Desenvolvedor Full Stack especializado em{' '}
-            <span className="text-primary font-semibold">React</span>,{' '}
-            <span className="text-accent font-semibold">PHP</span>,{' '}
-            <span className="text-primary font-semibold">Python</span>,{' '}
-            <span className="text-accent font-semibold">Oracle</span> e{' '}
-            <span className="text-primary font-semibold">PostgreSQL</span>.
-            Criando experiências digitais excepcionais.
-          </p>
-
-          {/* Tech Pills */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {['React.js', 'PHP', 'Python', 'JavaScript', 'TypeScript', 'PostgreSQL', 'Oracle'].map((tech) => (
-              <span
-                key={tech}
-                className="px-4 py-2 bg-secondary/50 backdrop-blur-sm rounded-full text-sm font-medium text-secondary-foreground border border-border/30 hover:border-primary/50 transition-colors"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="btn-gradient text-primary-foreground font-semibold px-8 py-4 rounded-xl"
-              onClick={() => scrollToSection('projetos')}
-            >
-              <Code className="w-5 h-5 mr-2" />
-              Ver Projetos
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-border/30 hover:border-primary/50 bg-card/20 backdrop-blur-sm text-foreground px-8 py-4 rounded-xl"
-              onClick={() => scrollToSection('contato')}
-            >
-              Vamos Conversar
-            </Button>
-          </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        {/* Tagline */}
+        <p className="font-mono-brutal text-sm text-[var(--gray)] mt-8 max-w-[500px] leading-relaxed tracking-wide">
+          <span className="text-[var(--primary)]">$ </span>
+          Production-grade code. Zero excuses.<br/>
+          <span className="text-[var(--primary)]">$ </span>
+          Oracle → PostgreSQL → React → Deploy.
+        </p>
+
+        {/* CTA */}
+        <div className="flex flex-wrap gap-4 mt-10">
           <button
-            onClick={() => scrollToSection('sobre')}
-            className="text-muted-foreground hover:text-primary transition-colors"
+            onClick={() => {
+              document.getElementById('projetos')?.scrollIntoView({ behavior: 'auto' });
+            }}
+            className="border-[3px] border-white px-8 py-3 font-mono-brutal text-sm font-bold tracking-[2px] text-white hover:bg-white hover:text-black transition-none"
           >
-            <ArrowDown size={24} />
+            VIEW WORK →
+          </button>
+          <button
+            onClick={() => {
+              document.getElementById('contato')?.scrollIntoView({ behavior: 'auto' });
+            }}
+            className="border-[3px] border-[var(--primary)] px-8 py-3 font-mono-brutal text-sm font-bold tracking-[2px] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-black transition-none"
+          >
+            HIRE ME
           </button>
         </div>
+
+        {/* Status bar */}
+        <div className="mt-16 flex flex-wrap items-center gap-6 font-mono-brutal text-xs text-[var(--gray)]">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-[var(--accent)] inline-block animate-blink" />
+            AVAILABLE FOR WORK
+          </div>
+          <div>
+            <span className="text-white">2+</span> YEARS EXP
+          </div>
+          <div>
+            <span className="text-white">15+</span> PROJECTS SHIPPED
+          </div>
+          <div>
+            MARINGÁ-PR, BRASIL
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 font-mono-brutal text-xs text-[var(--gray)] flex flex-col items-center gap-2">
+        <span className="tracking-[3px]">SCROLL</span>
+        <div className="w-[1px] h-8 bg-[var(--gray)]" />
       </div>
     </section>
   );

@@ -1,228 +1,146 @@
-import { 
-  Mail, 
-  MessageCircle, 
-  Github, 
-  Linkedin, 
-  Instagram,
-  MapPin,
-  Clock,
-  Send
-} from 'lucide-react';
-import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Contact = () => {
-  const contactInfo = [
-    {
-      icon: MessageCircle,
-      title: 'WhatsApp',
-      subtitle: 'Vamos conversar!',
-      value: '+55 (44) 99710-8065',
-      link: 'https://wa.me/5544997108065',
-      color: 'text-green-500',
-      bgColor: 'bg-green-500/10'
-    },
-    {
-      icon: Mail,
-      title: 'Email',
-      subtitle: 'Para contato profissional',
-      value: 'eliasvictor2452gmail.com',
-      link: 'mailto:eliasvictor2452gmail.com',
-      color: 'text-accent',
-      bgColor: 'bg-accent/10'
-    },
-    {
-      icon: MapPin,
-      title: 'Localização',
-      subtitle: 'Maringá-PR, Brasil',
-      value: 'Disponível para remoto',
-      color: 'text-primary',
-      bgColor: 'bg-primary/10'
-    },
-    {
-      icon: Clock,
-      title: 'Disponibilidade',
-      subtitle: 'Seg - Sab',
-      value: '08:00 - 22:00',
-      color: 'text-orange-500',
-      bgColor: 'bg-orange-500/10'
-    }
-  ];
+  const { ref: contactRef, isVisible: contactVisible } = useScrollAnimation();
 
-  const socialLinks = [
+  const links = [
     {
-      icon: Github,
-      name: 'GitHub',
-      username: 'EliasVRG',
-      url: 'https://github.com/EliasVRG',
-      color: 'text-foreground hover:text-primary'
+      label: 'WHATSAPP',
+      value: '+55 (44) 99710-8065',
+      href: 'https://wa.me/5544997108065?text=Saw your portfolio. Let\'s talk.',
+      accent: 'var(--accent)',
     },
     {
-      icon: Linkedin,
-      name: 'LinkedIn',
-      username: 'Elias Victor Rocha Garcia',
-      url: 'https://www.linkedin.com/in/elias-victor-rocha-garcia-00243521b/',
-      color: 'text-blue-500 hover:text-blue-400'
+      label: 'EMAIL',
+      value: 'eliasvictor2452@gmail.com',
+      href: 'mailto:eliasvictor2452@gmail.com?subject=Project Inquiry&body=Hey Elias, saw your portfolio and want to discuss a project.',
+      accent: 'var(--primary)',
     },
     {
-      icon: Instagram,
-      name: 'Instagram',
-      username: '@elias_victor__',
-      url: 'https://www.instagram.com/elias_victor__',
-      color: 'text-pink-500 hover:text-pink-400'
-    }
+      label: 'GITHUB',
+      value: 'github.com/EliasVRG',
+      href: 'https://github.com/EliasVRG',
+      accent: 'var(--white)',
+    },
+    {
+      label: 'LINKEDIN',
+      value: 'Elias Victor Rocha Garcia',
+      href: 'https://www.linkedin.com/in/elias-victor-rocha-garcia-00243521b/',
+      accent: '#0A66C2',
+    },
+    {
+      label: 'INSTAGRAM',
+      value: '@elias_victor__',
+      href: 'https://www.instagram.com/elias_victor__',
+      accent: '#E1306C',
+    },
   ];
 
   return (
-    <section id="contato" className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Vamos <span className="text-transparent bg-clip-text bg-gradient-primary">Conversar</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Estou sempre aberto a novas oportunidades e projetos interessantes. 
-              Entre em contato comigo!
-            </p>
-            <div className="w-20 h-1 bg-gradient-primary mx-auto rounded-full mt-6"></div>
-          </div>
+    <>
+      {/* STATEMENT */}
+      <div className="statement-block border-t-4 border-white">
+        <span className="text-white">LET'S BUILD </span>
+        <span className="text-[var(--primary)]">SOMETHING</span>
+        <br />
+        <span className="text-[var(--accent)]">REAL</span>
+        <span className="text-white">.</span>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="space-y-8 animate-slide-up">
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Informações de Contato
-                </h3>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {contactInfo.map((info, index) => (
-                    <Card key={index} className="card-gradient hover-lift border-border/30">
-                      <CardContent className="p-6">
-                        <div className="flex items-start space-x-4">
-                          <div className={`p-3 rounded-lg ${info.bgColor}`}>
-                            <info.icon className={`w-6 h-6 ${info.color}`} />
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-foreground">{info.title}</h4>
-                            <p className="text-sm text-muted-foreground mb-1">{info.subtitle}</p>
-                            {info.link ? (
-                              <a 
-                                href={info.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-primary hover:text-primary/80 transition-colors"
-                              >
-                                {info.value}
-                              </a>
-                            ) : (
-                              <p className="text-sm text-foreground">{info.value}</p>
-                            )}
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
+      {/* CONTACT SECTION */}
+      <section
+        id="contato"
+        className="section-brutal"
+        data-section="004 // CONTACT"
+        ref={contactRef}
+      >
+        <div className={`transition-all duration-500 ${contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          style={{ transitionTimingFunction: 'steps(8)' }}
+        >
+          <div className="grid md:grid-cols-[1.2fr_1fr] gap-16">
+            {/* Left: Contact Links */}
+            <div>
+              <h2 className="font-brutal text-[clamp(2rem,5vw,4rem)] text-white mb-4 leading-[0.9]">
+                GET IN <span className="text-[var(--primary)]">TOUCH</span>
+              </h2>
+              <p className="font-mono-brutal text-xs tracking-[2px] text-[var(--gray)] mb-12">
+                I DON'T BITE. UNLESS IT'S A BUG IN PRODUCTION.
+              </p>
 
-              {/* Social Links */}
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Redes Sociais
-                </h3>
-                <div className="space-y-4">
-                  {socialLinks.map((social, index) => (
-                    <Card key={index} className="card-gradient hover-lift border-border/30">
-                      <CardContent className="p-4">
-                        <a 
-                          href={social.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-4 group"
-                        >
-                          <social.icon className={`w-6 h-6 ${social.color} transition-colors`} />
-                          <div>
-                            <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                              {social.name}
-                            </h4>
-                            <p className="text-sm text-muted-foreground">{social.username}</p>
-                          </div>
-                        </a>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+              <div className="space-y-0">
+                {links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between py-6 border-b-[2px] border-white/10 hover:border-white/40 transition-none"
+                  >
+                    <div>
+                      <div className="font-mono-brutal text-[10px] tracking-[3px] mb-2" style={{ color: link.accent }}>
+                        {link.label}
+                      </div>
+                      <div className="text-sm text-[var(--gray-light)] group-hover:text-white transition-none">
+                        {link.value}
+                      </div>
+                    </div>
+                    <span className="font-brutal text-2xl text-[var(--gray)] group-hover:text-white group-hover:translate-x-2 transition-none inline-block">
+                      →
+                    </span>
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* CTA Section */}
-            <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <Card className="card-gradient border-border/30 h-full">
-                <CardContent className="p-8 flex flex-col justify-center h-full">
-                  <div className="text-center space-y-6">
-                    <div className="p-4 bg-gradient-primary rounded-full w-20 h-20 mx-auto glow-effect flex items-center justify-center">
-                      <Send className="w-10 h-10 text-primary-foreground" />
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-2xl font-bold text-foreground mb-4">
-                        Pronto para começar um projeto?
-                      </h3>
-                      <p className="text-muted-foreground mb-8 leading-relaxed">
-                        Tenho disponibilidade para novos projetos e adoraria saber mais 
-                        sobre sua ideia. Vamos transformá-la em realidade juntos!
-                      </p>
-                    </div>
-
-                    {/* Primary CTA */}
-                    <div className="space-y-4">
-                      <Button 
-                        size="lg"
-                        className="btn-gradient text-primary-foreground font-semibold w-full"
-                        asChild
-                      >
-                        <a 
-                          href="https://wa.me/5544997108065?text=Olá! Vi seu portfólio e gostaria de conversar sobre um projeto."
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center"
-                        >
-                          <MessageCircle className="w-5 h-5 mr-2" />
-                          Chamar no WhatsApp
-                        </a>
-                      </Button>
-                      
-                      <Button 
-                        size="lg"
-                        variant="outline"
-                        className="border-border/30 hover:border-primary/50 bg-card/20 backdrop-blur-sm text-foreground w-full"
-                        asChild
-                      >
-                        <a 
-                          href="mailto:eliasvictor2452@gmail.com?subject=Proposta de Projeto&body=Olá Elias, vi seu portfólio e gostaria de discutir um projeto."
-                          className="flex items-center justify-center"
-                        >
-                          <Mail className="w-5 h-5 mr-2" />
-                          Enviar Email
-                        </a>
-                      </Button>
-                    </div>
-
-                    {/* Response Time */}
-                    <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
-                      <Clock className="w-4 h-4" />
-                      <span>Resposta em até 24 horas</span>
-                    </div>
+            {/* Right: Location + Availability */}
+            <div className="flex flex-col justify-between">
+              <div>
+                <div className="border-[3px] border-white p-8 mb-6 relative noise-overlay">
+                  <div className="font-mono-brutal text-[10px] tracking-[3px] text-[var(--accent)] mb-4">
+                    LOCATION
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="font-brutal text-2xl text-white leading-[0.9] mb-2">
+                    MARINGÁ
+                  </div>
+                  <div className="font-mono-brutal text-xs text-[var(--gray)] tracking-[1px]">
+                    PARANÁ, BRASIL
+                  </div>
+                  <div className="font-mono-brutal text-xs text-[var(--gray)] tracking-[1px] mt-4">
+                    AVAILABLE FOR REMOTE WORK
+                  </div>
+
+                  {/* Corner accent */}
+                  <div className="absolute top-0 right-0 w-12 h-12 bg-[var(--primary)]" />
+                </div>
+
+                <div className="border-[3px] border-[var(--accent)] p-8 relative">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="w-3 h-3 bg-[var(--accent)] animate-blink" />
+                    <span className="font-mono-brutal text-[10px] tracking-[3px] text-[var(--accent)]">
+                      STATUS
+                    </span>
+                  </div>
+                  <div className="font-brutal text-xl text-white leading-[0.9] mb-2">
+                    OPEN FOR PROJECTS
+                  </div>
+                  <div className="font-mono-brutal text-xs text-[var(--gray)] tracking-[1px]">
+                    MON — SAT // 08:00 — 22:00 BRT
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <div className="font-mono-brutal text-xs text-[var(--gray)] tracking-[1px] leading-relaxed">
+                  <span className="text-[var(--primary)]">$ </span>response_time: ~24h<br/>
+                  <span className="text-[var(--primary)]">$ </span>preferred_contact: whatsapp<br/>
+                  <span className="text-[var(--primary)]">$ </span>languages: pt-BR, en<br/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

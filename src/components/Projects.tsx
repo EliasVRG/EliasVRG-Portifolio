@@ -1,275 +1,216 @@
-import { ExternalLink, Github, Star, Briefcase } from 'lucide-react';
-import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
 import projectPreview from '../assets/project-preview-1.jpg';
 import projectPreview2 from '../assets/project-preview-2.jpg';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Projects = () => {
+  const { ref: projectsRef, isVisible: projectsVisible } = useScrollAnimation();
+
   const projects = [
-    // {
-    //   title: 'E-commerce Moderno',
-    //   description: 'Plataforma completa de e-commerce desenvolvida com React.js e Python Django. Sistema de pagamentos, gestão de produtos e painel administrativo.',
-    //   image: projectPreview,
-    //   tags: ['React.js', 'Python', 'Django', 'PostgreSQL', 'Stripe'],
-    //   type: 'empresa',
-    //   github: 'https://github.com',
-    //   demo: 'https://example.com',
-    //   featured: true
-    // },
-    // {
-    //   title: 'Dashboard Analytics',
-    //   description: 'Sistema de análise de dados em tempo real para empresas. Integração com múltiplas APIs e visualizações interativas.',
-    //   tags: ['React.js', 'Node.js', 'MongoDB', 'Socket.io'],
-    //   type: 'empresa',
-    //   github: 'https://github.com',
-    //   demo: 'https://example.com'
-    // },
-    // {
-    //   title: 'App Mobile Delivery',
-    //   description: 'Aplicativo de delivery desenvolvido com React Native. GPS tracking, pagamentos online e sistema de avaliações.',
-    //   tags: ['React Native', 'Firebase', 'Node.js', 'Express'],
-    //   type: 'freelance',
-    //   github: 'https://github.com',
-    //   demo: 'https://example.com'
-    // },
-    // {
-    //   title: 'Sistema de Gestão Hospitalar',
-    //   description: 'Plataforma web para gestão de pacientes, médicos e consultas. Desenvolvido durante estágio na empresa TechHealth.',
-    //   tags: ['PHP', 'Laravel', 'MySQL', 'Bootstrap'],
-    //   type: 'empresa',
-    //   github: 'https://github.com',
-    //   company: 'TechHealth'
-    // },
-    // {
-    //   title: 'Portfolio Pessoal',
-    //   description: 'Site portfolio responsivo criado com React.js e Tailwind CSS. Design moderno e animações suaves.',
-    //   tags: ['React.js', 'Tailwind CSS', 'Framer Motion'],
-    //   type: 'pessoal',
-    //   github: 'https://github.com',
-    //   demo: 'https://example.com'
-    // },
-    // {
-    //   title: 'API REST Microserviços',
-    //   description: 'Arquitetura de microserviços em Python com FastAPI. Sistema de autenticação JWT e documentação automática.',
-    //   tags: ['Python', 'FastAPI', 'Docker', 'PostgreSQL'],
-    //   type: 'pessoal',
-    //   github: 'https://github.com'
-    // },
     {
-      title: 'LoadStay',
-      description: 'Plataforma SaaS para gestão de estadias voltada a pequenas e médias empresas, substituindo planilhas por um sistema seguro e escalável. Permite cadastro de clientes com diferentes planos de assinatura, controle detalhado de estadias com documentos anexados, filtros avançados, gestão de usuários por administradores e integração com pagamentos online.',
+      title: 'LOADSTAY',
+      subtitle: 'SaaS PLATFORM',
+      description: 'Full SaaS for stay management. Subscription plans, document handling, advanced filters, admin panel. Replaced spreadsheets for real businesses.',
       image: projectPreview,
-      tags: ['React.js', 'TypeScript', 'PHP', 'Laravel', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
-      type: 'pessoal',
-      featured: true
+      tags: ['React.js', 'TypeScript', 'PHP', 'Laravel', 'PostgreSQL', 'Stripe', 'Tailwind'],
+      type: 'PERSONAL',
+      featured: true,
+      number: '01',
     },
     {
-      title: 'RPA para Guias de ICMS',
-      description: 'Desenvolvimento de um Robotic Process Automation (RPA) em Python para automatizar a leitura de guias de ICMS em pastas monitoradas e realizar a inserção estruturada dos dados no ERP da empresa, reduzindo erros manuais e aumentando a eficiência operacional.',
-      tags: ['Python', 'Pandas', 'Openpyxl', 'PyAutoGUI', 'Automação'],
-      type: 'empresa',
-      company: 'Transpanorama'
-    },
-    {
-      title: 'RPA para Faturamento',
-      description: 'Desenvolvimento de um Robotic Process Automation (RPA) em Python para automatizar a coleta de contas a pagar de um cliente, registrar os dados no sistema e gerar automaticamente relatórios de faturamento enviados por e-mail, reduzindo esforço manual e aumentando a confiabilidade das informações.',
-      tags: ['Python', 'Pandas', 'Openpyxl', 'PyAutoGUI', 'Playwright', 'Smtplib', 'Automação'],
-      type: 'empresa',
-      company: 'Transpanorama'
-    },
-    {
-      title: 'ReuniOn',
-      description: 'Sistema de automação que integra WhatsApp e Google Calendar para envio de agendas diárias, criação e edição de eventos por mensagens e sincronização automática. Possui webhook para atualizações, autenticação segura via Google OAuth, deploy simplificado em Vercel (com agendamento via Vercel Cron) e foco em baixo custo de operação.',
+      title: 'REUNION',
+      subtitle: 'AUTOMATION ENGINE',
+      description: 'WhatsApp + Google Calendar integration. Auto-scheduling, event creation via messages, webhook sync. Deployed on Vercel with cron jobs. Zero manual intervention.',
       image: projectPreview2,
-      tags: ['Python', 'Flask', 'Google Calendar API', 'WhatsApp Cloud API', 'Vercel', 'Docker'],
-      type: 'pessoal',
-      featured: true
+      tags: ['Python', 'Flask', 'Google Calendar API', 'WhatsApp Cloud API', 'Docker'],
+      type: 'PERSONAL',
+      featured: true,
+      number: '02',
     },
     {
-      title: 'Tracker de Carga',
-      description: 'Desenvolvimento de um sistema web para clientes da transportadora acompanharem suas entregas em tempo real, com funcionalidades de monitoramento de carga, gestão de ocorrências e rastreamento de placas com problemas, garantindo maior transparência e agilidade logística.',
-      tags: ['Python', 'Flask', 'MySQL', 'Jinja', 'Bootstrap', 'API REST'],
-      type: 'empresa',
-      company: 'Transpanorama'
+      title: 'RPA // ICMS',
+      subtitle: 'ROBOTIC PROCESS AUTOMATION',
+      description: 'Automated ICMS tax guide reading from monitored directories. Structured data injection into enterprise ERP. Eliminated manual errors entirely.',
+      tags: ['Python', 'Pandas', 'Openpyxl', 'PyAutoGUI'],
+      type: 'ENTERPRISE',
+      company: 'TRANSPANORAMA',
+      number: '03',
+    },
+    {
+      title: 'RPA // BILLING',
+      subtitle: 'FINANCIAL AUTOMATION',
+      description: 'End-to-end billing automation. Scrapes payables, injects into system, generates reports, sends via email. Replaced 3 manual processes.',
+      tags: ['Python', 'Playwright', 'Pandas', 'Smtplib'],
+      type: 'ENTERPRISE',
+      company: 'TRANSPANORAMA',
+      number: '04',
+    },
+    {
+      title: 'CARGO TRACKER',
+      subtitle: 'LOGISTICS PLATFORM',
+      description: 'Real-time shipment tracking for transport clients. Incident management, plate monitoring, delivery status. Built for transparency at scale.',
+      tags: ['Python', 'Flask', 'MySQL', 'Bootstrap', 'REST API'],
+      type: 'ENTERPRISE',
+      company: 'TRANSPANORAMA',
+      number: '05',
     },
   ];
 
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'empresa':
-        return <Briefcase className="w-4 h-4" />;
-      case 'pessoal':
-        return <Star className="w-4 h-4" />;
-      default:
-        return <Star className="w-4 h-4" />;
-    }
-  };
-
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'empresa':
-        return 'bg-accent/20 text-accent border-accent/30';
-      case 'pessoal':
-        return 'bg-primary/20 text-primary border-primary/30';
-      default:
-        return 'bg-primary/20 text-primary border-primary/30';
-    }
-  };
-
-  const getTypeLabel = (type: string) => {
-    switch (type) {
-      case 'empresa':
-        return 'Empresa';
-      case 'freelance':
-        return 'Freelance';
-      case 'pessoal':
-        return 'Pessoal';
-      default:
-        return 'Projeto';
-    }
-  };
-
   return (
-    <section id="projetos" className="py-20 bg-muted/20">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Meus <span className="text-transparent bg-clip-text bg-gradient-primary">Projetos</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Alguns dos projetos que desenvolvi, desde soluções empresariais até experimentos pessoais
-            </p>
-            <div className="w-20 h-1 bg-gradient-primary mx-auto rounded-full mt-6"></div>
+    <>
+      {/* STATEMENT */}
+      <div className="statement-block border-t-4 border-white">
+        <span className="text-white">SYSTEMS </span>
+        <span className="text-[var(--primary)]">&gt;</span>
+        <span className="text-white"> INTERFACES.</span>
+      </div>
+
+      {/* PROJECTS SECTION */}
+      <section
+        id="projetos"
+        className="section-brutal"
+        data-section="003 // PROJECTS"
+        ref={projectsRef}
+      >
+        <div className={`transition-all duration-500 ${projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          style={{ transitionTimingFunction: 'steps(8)' }}
+        >
+          <h2 className="font-brutal text-[clamp(2rem,5vw,4rem)] text-white mb-4 leading-[0.9]">
+            THINGS I <span className="text-[var(--primary)]">BUILT</span>
+          </h2>
+          <p className="font-mono-brutal text-xs tracking-[2px] text-[var(--gray)] mb-16">
+            REAL PROJECTS. REAL USERS. REAL IMPACT.
+          </p>
+
+          {/* FEATURED PROJECTS — large cards */}
+          <div className="space-y-0">
+            {projects.filter(p => p.featured).map((project) => (
+              <div
+                key={project.number}
+                className="border-b-[3px] border-white/20 py-12 group hover:bg-white/[0.02] transition-none relative"
+              >
+                <div className="grid md:grid-cols-[1fr_1.2fr] gap-8 items-start">
+                  {/* Left: Info */}
+                  <div>
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="font-mono-brutal text-xs text-[var(--gray)] tracking-[2px]">
+                        {project.number}
+                      </span>
+                      <span className="font-mono-brutal text-[10px] tracking-[2px] border border-[var(--primary)] text-[var(--primary)] px-2 py-0.5">
+                        {project.type}
+                      </span>
+                    </div>
+
+                    <h3 className="font-brutal text-[clamp(1.5rem,4vw,3rem)] text-white leading-[0.9] mb-2 group-hover:text-[var(--primary)] transition-none">
+                      {project.title}
+                    </h3>
+                    <div className="font-mono-brutal text-xs tracking-[2px] text-[var(--accent)] mb-6">
+                      {project.subtitle}
+                    </div>
+
+                    <p className="text-sm text-[var(--gray-light)] leading-[1.8] max-w-md mb-6">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono-brutal text-[10px] tracking-[1px] border border-white/20 px-2 py-1 text-[var(--gray)]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right: Image */}
+                  {project.image && (
+                    <div className="relative overflow-hidden border-[3px] border-white/20 group-hover:border-[var(--primary)] transition-none">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-[250px] md:h-[300px] object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                        style={{ transitionTimingFunction: 'steps(6)' }}
+                      />
+                      <div className="absolute inset-0 bg-[var(--bg)]/30 group-hover:bg-transparent transition-none" />
+                      
+                      {/* Corner decoration */}
+                      <div className="absolute top-0 right-0 w-8 h-8 border-b-[3px] border-l-[3px] border-[var(--primary)] opacity-0 group-hover:opacity-100 transition-none" />
+                      <div className="absolute bottom-0 left-0 w-8 h-8 border-t-[3px] border-r-[3px] border-[var(--primary)] opacity-0 group-hover:opacity-100 transition-none" />
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <Card 
-                key={index} 
-                className={`card-gradient hover-lift border-border/30 group overflow-hidden ${
-                  project.featured ? 'md:col-span-2' : ''
-                }`}
-              >
-                {project.image && (
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent"></div>
-                  </div>
-                )}
-                
-                <CardContent className="p-6">
-                  {/* Project Type */}
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge 
-                      variant="outline" 
-                      className={`${getTypeColor(project.type)} border`}
-                    >
-                      {getTypeIcon(project.type)}
-                      <span className="ml-1">{getTypeLabel(project.type)}</span>
-                    </Badge>
+          {/* OTHER PROJECTS — dense list */}
+          <div className="mt-16">
+            <div className="font-mono-brutal text-xs tracking-[2px] text-[var(--gray)] mb-8 flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-[var(--accent)] inline-block" />
+              ENTERPRISE WORK @ TRANSPANORAMA
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-0">
+              {projects.filter(p => !p.featured).map((project) => (
+                <div
+                  key={project.number}
+                  className="card-brutal"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="font-mono-brutal text-xs text-[var(--gray)] tracking-[2px]">
+                      {project.number}
+                    </span>
                     {project.company && (
-                      <span className="text-xs text-muted-foreground">
+                      <span className="font-mono-brutal text-[10px] tracking-[1px] text-[var(--accent)]">
                         @ {project.company}
                       </span>
                     )}
                   </div>
 
-                  {/* Project Info */}
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="font-brutal text-xl text-white mb-2 leading-[0.9]">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-3">
+                  <div className="font-mono-brutal text-[10px] tracking-[2px] text-[var(--accent)] mb-4">
+                    {project.subtitle}
+                  </div>
+
+                  <p className="text-xs text-[var(--gray-light)] leading-[1.7] mb-6">
                     {project.description}
                   </p>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag, tagIndex) => (
-                      <Badge 
-                        key={tagIndex} 
-                        variant="secondary"
-                        className="text-xs bg-secondary/50 hover:bg-secondary text-secondary-foreground"
+                  <div className="flex flex-wrap gap-1">
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono-brutal text-[9px] tracking-[1px] text-[var(--gray)] border-b border-white/10 px-1 py-0.5"
                       >
                         {tag}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
-
-                  {/* Project Links */}
-                  <div className="flex items-center space-x-3">
-                    <Button 
-                      size="sm" 
-                      variant="outline"
-                      className="border-border/30 hover:border-primary/50 bg-card/20"
-                      asChild
-                    >
-                      <a 
-                        href={project.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center"
-                      >
-                        <Github className="w-4 h-4 mr-1" />
-                        Código
-                      </a>
-                    </Button>
-                    
-                    {project.demo && (
-                      <Button 
-                        size="sm" 
-                        className="btn-gradient text-primary-foreground"
-                        asChild
-                      >
-                        <a 
-                          href={project.demo} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="flex items-center"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-1" />
-                          Ver Projeto
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* More Projects CTA */}
-          <div className="text-center mt-12 animate-fade-in">
-            <p className="text-muted-foreground mb-6">
-              Gostou dos projetos? Confira mais no meu GitHub!
-            </p>
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-primary/30 hover:border-primary bg-card/20 backdrop-blur-sm text-foreground hover:text-primary"
-              asChild
+          {/* GitHub CTA */}
+          <div className="mt-16 flex items-center gap-6">
+            <a
+              href="https://github.com/EliasVRG?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-[3px] border-white px-8 py-3 font-mono-brutal text-sm font-bold tracking-[2px] text-white hover:bg-white hover:text-black transition-none inline-block"
             >
-              <a 
-                href="https://github.com/EliasVRG?tab=repositories" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center"
-              >
-                <Github className="w-5 h-5 mr-2" />
-                Ver Mais no GitHub
-              </a>
-            </Button>
+              ALL REPOS ON GITHUB ↗
+            </a>
+            <span className="font-mono-brutal text-xs text-[var(--gray)] tracking-[1px] hidden md:inline">
+              // MORE WORK AVAILABLE
+            </span>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

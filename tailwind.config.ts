@@ -15,6 +15,8 @@ export default {
     extend: {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
+        brutal: ['Archivo Black', 'sans-serif'],
+        'mono-brutal': ['Space Mono', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -23,7 +25,7 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "hsl(var(--primary-hsl))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -39,7 +41,7 @@ export default {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "hsl(var(--accent-hsl))",
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
@@ -68,38 +70,21 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fadeIn 0.6s ease-out forwards",
-        "slide-up": "slideUp 0.8s ease-out forwards",
-        "float": "float 3s ease-in-out infinite",
-      },
-      backgroundImage: {
-        'gradient-primary': 'var(--gradient-primary)',
-        'gradient-card': 'var(--gradient-card)',
-        'gradient-hero': 'var(--gradient-hero)',
-      },
-      boxShadow: {
-        'glow': 'var(--shadow-glow)',
-        'card': 'var(--shadow-card)',
-        'elegant': 'var(--shadow-elegant)',
+        "fade-in": "fadeIn 0.4s steps(8) forwards",
+        "slide-up": "slideUp 0.5s steps(10) forwards",
+        "float": "float 3s steps(20) infinite",
+        "blink": "blink 1s steps(1) infinite",
       },
     },
   },
