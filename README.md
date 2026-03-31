@@ -1,69 +1,48 @@
-# React + TypeScript + Vite
+# ELIAS // DEV — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **"I build systems that don't break in production. Zero excuses."**
 
-Currently, two official plugins are available:
+This is the repository for my personal developer portfolio, designed with a **neo-brutalist** aesthetic and a hidden **terminal-based interactive layer** (Hacker Mode). Built for high performance, accessibility, and a unique user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 **Live Version:** [https://elias-vrg-portifolio.vercel.app](https://elias-vrg-portifolio.vercel.app)
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Framework:** React + TypeScript (via Vite)
+- **Styling:** Custom CSS (Neo-brutalist design system)
+- **Interactive Layer:** Custom CLI / Terminal interface (Vanilla JS)
+- **Deployment:** Vercel
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Key Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+* **Aggressive Neo-Brutalist Design:** Raw typography, high-contrast colors, and bold layouts.
+* **Hidden Command-Line Interface (CLI):** Press <kbd>\`</kbd> or <kbd>Ctrl</kbd> + <kbd>K</kbd> to open the system terminal. Available commands include `whoami`, `stack`, `projects`, and the secret `mode hacker`.
+* **Dynamic Mouse Interactions:** Custom DOM cursors and context-aware hover detection.
+* **Performance & SEO First:** Built organically with Vite and React for fast load times and fully structured metadata for excellent SEO.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ⚙️ Running Locally
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/EliasVRG/EliasVRG-Portifolio.git
+   ```
+2. Navigate into the directory:
+   ```bash
+   cd EliasVRG-Portifolio
+   ```
+3. Install dependencies (using npm or your preferred package manager):
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open your browser at `http://localhost:8080`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📎 Author
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Elias Victor Rocha Garcia**  
+Systems Engineer & Full Stack Developer.  
+*React, TypeScript, PHP, Python, Oracle, PostgreSQL.*  
+Based in Maringá-PR, Brasil.
