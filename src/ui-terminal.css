@@ -1,0 +1,176 @@
+/* ═══════════════════════════════════════════════════════ */
+/* TERMINAL UI & INTERACTIVE EFFECTS                      */
+/* Layer: Narrative & Experience                          */
+/* ═══════════════════════════════════════════════════════ */
+
+:root {
+  --terminal-bg: #000000;
+  --terminal-green: #00FF9F;
+  --terminal-yellow: #FFD60A;
+  --terminal-font: 'Space Mono', monospace;
+}
+
+/* TERMINAL OVERLAY */
+#terminal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--terminal-bg);
+  z-index: 10000;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  color: var(--terminal-green);
+  font-family: var(--terminal-font);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s steps(4);
+  overflow: hidden;
+}
+
+#terminal-overlay.active {
+  opacity: 0.98;
+  pointer-events: all;
+}
+
+#terminal-content {
+  flex: 1;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#terminal-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#terminal-prompt {
+  color: var(--terminal-yellow);
+}
+
+#terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--terminal-green);
+  font-family: var(--terminal-font);
+  font-size: 14px;
+  width: 100%;
+}
+
+/* CURSOR HACKER MODE */
+.cursor-hacker {
+  cursor: crosshair !important;
+}
+
+.custom-cursor.hacker {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: 1px solid var(--terminal-green);
+  mix-blend-mode: normal;
+}
+
+.custom-cursor.hacker::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 1px;
+  background: var(--terminal-green);
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor.hacker::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: var(--terminal-green);
+  transform: translate(-50%, -50%);
+}
+
+/* SYSTEM LOGS (SCROLL TRIGGER) */
+.system-log-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.system-log-item {
+  color: var(--terminal-green);
+  font-family: var(--terminal-font);
+  font-size: 10px;
+  text-transform: uppercase;
+  background: #000;
+  padding: 4px 8px;
+  border-left: 2px solid var(--terminal-green);
+  margin-bottom: 5px;
+  animation: logReveal 0.3s steps(5) forwards;
+  opacity: 0;
+}
+
+@keyframes logReveal {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 0.7; transform: translateX(0); }
+}
+
+/* GLITCH FOR TITLES */
+.glitch-heavy {
+  position: relative;
+}
+
+.glitch-heavy:hover {
+  animation: glitch-displacement 0.2s steps(2) infinite;
+  color: var(--terminal-yellow);
+}
+
+@keyframes glitch-displacement {
+  0% { transform: translate(0); text-shadow: 2px 0 var(--terminal-green), -2px 0 #f0f; }
+  50% { transform: translate(-2px, 1px); }
+  100% { transform: translate(2px, -1px); text-shadow: -2px 0 var(--terminal-green), 2px 0 #f0f; }
+}
+
+/* DEBUG GRID */
+.debug-grid-active::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 255, 159, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 159, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* SYSTEM OVERRIDE EFFECT */
+.system-override {
+  animation: override-glitch 1s steps(5);
+}
+
+@keyframes override-glitch {
+  0%, 100% { filter: invert(0); background: #0a0a0a; }
+  20% { filter: invert(1); background: var(--terminal-green); }
+  40% { filter: hue-rotate(90deg); transform: scale(1.01); }
+  60% { filter: contrast(2); transform: skewX(5deg); }
+  80% { filter: brightness(2); }
+}
+
+/* TYPING ANIMATION HELPER */
+.typing::after {
+  content: "_";
+  animation: blink 0.5s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

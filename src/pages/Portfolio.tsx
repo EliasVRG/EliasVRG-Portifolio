@@ -6,6 +6,11 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 
+// Hacker Experience Layer
+import '../ui-terminal.css';
+import { initEffects } from '../effects';
+import { initTerminal } from '../terminal';
+
 const Portfolio = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const cursorExpandedRef = useRef(false);
@@ -56,6 +61,10 @@ const Portfolio = () => {
     document.querySelectorAll('.reveal-brutal').forEach((el) => {
       observer.observe(el);
     });
+
+    // Initialize Interactive Layer
+    initEffects();
+    initTerminal();
 
     return () => observer.disconnect();
   }, []);
