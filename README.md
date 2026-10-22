@@ -32,12 +32,31 @@ Trechos entre `**asteriscos**` saem em destaque na página.
 
 Coloque os arquivos em `public/` com estes nomes e eles aparecem sozinhos:
 
-| Arquivo                      | Proporção | Onde aparece            |
-| ---------------------------- | --------- | ----------------------- |
-| `public/elias-retrato.jpg`   | 3:4       | ao lado do título do topo |
-| `public/elias-trabalho.jpg`  | 1:1       | na seção Sobre          |
+| Arquivo                     | Proporção do slot | Onde aparece              |
+| --------------------------- | ----------------- | ------------------------- |
+| `public/elias-retrato.jpeg` | 1:1               | ao lado do título do topo |
+| `public/elias-trabalho.jpeg`| 4:5               | na seção Sobre            |
 
 Enquanto o arquivo não existir, o lugar mostra uma moldura dizendo o que falta.
+
+A proporção de cada slot e o ponto de foco do corte ficam em `photos`, dentro de
+[`src/content/site.ts`](src/content/site.ts) — trocar por uma foto de outro formato é mudar
+`ratio` ali, sem tocar no CSS:
+
+```ts
+portrait: { src: '/elias-retrato.jpeg', ratio: '1 / 1', focus: 'center', /* ... */ }
+```
+
+As fotos são servidas direto de `public/`, sem processamento no build, então **o arquivo precisa
+entrar já redimensionado e comprimido**. O retrato aparece em 300px e a foto do Sobre em ~393px,
+então o dobro disso é suficiente:
+
+```bash
+convert original.jpeg -resize 800x800 -strip -interlace Plane -quality 80 public/elias-retrato.jpeg
+```
+
+Os arquivos que vieram da câmera estão em `src/assets/fotos-originais/` — ficam fora de `public/`,
+então não são publicados; servem só para gerar versões novas.
 
 ## Idiomas
 
