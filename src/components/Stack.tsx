@@ -7,7 +7,8 @@ const Stack = () => {
 
   return (
     <section className="stack" id="stack">
-      <span className="eyebrow">{t(stack.eyebrow)}</span>
+      {/* Rótulo e heading da seção são a mesma coisa aqui: o #stack do menu precisa de um. */}
+      <h2 className="eyebrow">{t(stack.eyebrow)}</h2>
       <p className="words">
         {stack.items.map((item) => (
           <Fragment key={item}>
