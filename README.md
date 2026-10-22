@@ -1,48 +1,70 @@
-# ELIAS // DEV — Portfolio
+# Portfólio — Elias Garcia
 
-> **"I build systems that don't break in production. Zero excuses."**
+> **"Eu acho o que os outros não acham."**
 
-This is the repository for my personal developer portfolio, designed with a **neo-brutalist** aesthetic and a hidden **terminal-based interactive layer** (Hacker Mode). Built for high performance, accessibility, and a unique user experience.
+Portfólio pessoal em uma página, bilíngue (pt-BR / EN), com foco nos casos de produção: integrações corporativas, análise de causa-raiz e arquitetura de sistemas.
 
-🔗 **Live Version:** [https://elias-vrg-portifolio.vercel.app](https://elias-vrg-portifolio.vercel.app)
+🔗 **No ar:** [elias-vrg-portifolio.vercel.app](https://elias-vrg-portifolio.vercel.app)
 
-## 🛠️ Tech Stack
+## Stack
 
-- **Framework:** React + TypeScript (via Vite)
-- **Styling:** Custom CSS (Neo-brutalist design system)
-- **Interactive Layer:** Custom CLI / Terminal interface (Vanilla JS)
-- **Deployment:** Vercel
+- **Framework:** React 18 + TypeScript (Vite)
+- **Estilo:** CSS próprio com design tokens — sem framework de UI
+- **Tipografia:** Archivo (display) + Manrope (texto) + DM Mono (rótulos)
+- **Deploy:** Vercel
 
-## 🚀 Key Features
+Três dependências de produção: `react`, `react-dom` e `@vercel/speed-insights`.
 
-* **Aggressive Neo-Brutalist Design:** Raw typography, high-contrast colors, and bold layouts.
-* **Hidden Command-Line Interface (CLI):** Press <kbd>\`</kbd> or <kbd>Ctrl</kbd> + <kbd>K</kbd> to open the system terminal. Available commands include `whoami`, `stack`, `projects`, and the secret `mode hacker`.
-* **Dynamic Mouse Interactions:** Custom DOM cursors and context-aware hover detection.
-* **Performance & SEO First:** Built organically with Vite and React for fast load times and fully structured metadata for excellent SEO.
+## Como mexer no conteúdo
 
-## ⚙️ Running Locally
+Todo o texto do site está em **[`src/content/site.ts`](src/content/site.ts)**, nos dois idiomas. Não é preciso abrir componente nenhum para trocar uma frase, adicionar um projeto ou um caso.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/EliasVRG/EliasVRG-Portifolio.git
-   ```
-2. Navigate into the directory:
-   ```bash
-   cd EliasVRG-Portifolio
-   ```
-3. Install dependencies (using npm or your preferred package manager):
-   ```bash
-   npm install
-   ```
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-5. Open your browser at `http://localhost:8080`.
+```ts
+lead: {
+  pt: 'Encontra vagas freelance publicadas...',
+  en: 'Finds published freelance jobs...',
+},
+```
 
-## 📎 Author
+Trechos entre `**asteriscos**` saem em destaque na página.
 
-**Elias Victor Rocha Garcia**  
-Systems Engineer & Full Stack Developer.  
-*React, TypeScript, PHP, Python, Oracle, PostgreSQL.*  
-Based in Maringá-PR, Brasil.
+### Fotos
+
+Coloque os arquivos em `public/` com estes nomes e eles aparecem sozinhos:
+
+| Arquivo                      | Proporção | Onde aparece            |
+| ---------------------------- | --------- | ----------------------- |
+| `public/elias-retrato.jpg`   | 3:4       | ao lado do título do topo |
+| `public/elias-trabalho.jpg`  | 1:1       | na seção Sobre          |
+
+Enquanto o arquivo não existir, o lugar mostra uma moldura dizendo o que falta.
+
+## Idiomas
+
+O seletor PT/EN fica no topo e guarda a escolha no navegador. Ele também ajusta `<html lang>`, o título da aba e a meta description. A estrutura está em `src/i18n/`:
+
+- `context.ts` — tipo `L` (`{ pt, en }`), contexto e o hook `useLanguage()`
+- `index.tsx` — o `LanguageProvider`
+
+## Tema
+
+Claro e escuro saem do `prefers-color-scheme` do sistema. O CSS também responde a `data-theme="dark"` / `"light"` no `<html>`, então dá para ligar um botão de tema sem mexer nos estilos.
+
+## Rodando local
+
+```bash
+npm install
+npm run dev
+```
+
+O servidor sobe em `http://localhost:8080`.
+
+```bash
+npm run build     # build de produção em dist/
+npm run preview   # serve o build
+npm run lint      # eslint
+```
+
+## Imagem de compartilhamento
+
+`public/og-image.png` (1200×630) é o card que aparece ao colar o link em redes sociais e no WhatsApp. Se a headline mudar, essa imagem precisa ser refeita junto.
