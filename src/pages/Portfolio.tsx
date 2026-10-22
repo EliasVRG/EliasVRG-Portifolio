@@ -1,86 +1,74 @@
-import { useEffect, useRef } from 'react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
+import { useEffect } from 'react';
 import About from '../components/About';
-import Projects from '../components/Projects';
+import Cases from '../components/Cases';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import Projects from '../components/Projects';
+import Stack from '../components/Stack';
+import { meta } from '../content/site';
+import { LanguageProvider } from '../i18n';
+import { useLanguage } from '../i18n/context';
 
-// Hacker Experience Layer
-import '../ui-terminal.css';
-import { initEffects } from '../effects';
-import { initTerminal } from '../terminal';
-
-const Portfolio = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const cursorExpandedRef = useRef(false);
+/** Mantém título e descrição da página no idioma ativo. */
+const DocumentMeta = () => {
+  const { t } = useLanguage();
 
   useEffect(() => {
-    const cursor = cursorRef.current;
-    if (!cursor) return;
+    document.title = t(meta.title);
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', t(meta.description));
+  }, [t]);
 
-    const moveCursor = (e: MouseEvent) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    };
+  return null;
+};
 
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const isInteractive = target.closest('a, button, .card-brutal, .tag-brutal, .glitch-hover');
-      if (isInteractive && !cursorExpandedRef.current) {
-        cursor.classList.add('expanded');
-        cursorExpandedRef.current = true;
-      } else if (!isInteractive && cursorExpandedRef.current) {
-        cursor.classList.remove('expanded');
-        cursorExpandedRef.current = false;
+/** Abrir o site já com #secao na URL: o alvo só existe depois da montagem. */
+const useHashOnLoad = () => {
+  useEffect(() => {
+    const { hash } = window.location;
+    if (!hash) return;
+
+    const go = () => {
+      try {
+        document.querySelector(hash)?.scrollIntoView();
+      } catch {
+        // hash que não é um seletor válido: ignora
       }
     };
 
-    document.addEventListener('mousemove', moveCursor);
-    document.addEventListener('mouseover', handleMouseOver);
+    go();
+    // a página ainda cresce enquanto fontes e imagens chegam, então reposiciona
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', go, { once: true });
+    }
+    document.fonts?.ready.then(go);
 
-    return () => {
-      document.removeEventListener('mousemove', moveCursor);
-      document.removeEventListener('mouseover', handleMouseOver);
-    };
+    return () => window.removeEventListener('load', go);
   }, []);
+};
 
-  // Intersection Observer for reveal animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll('.reveal-brutal').forEach((el) => {
-      observer.observe(el);
-    });
-
-    // Initialize Interactive Layer
-    initEffects();
-    initTerminal();
-
-    return () => observer.disconnect();
-  }, []);
+const Portfolio = () => {
+  useHashOnLoad();
 
   return (
-    <main className="min-h-screen relative">
-      {/* Custom Cursor */}
-      <div ref={cursorRef} className="custom-cursor hidden md:block" />
-
+    <LanguageProvider>
+      <DocumentMeta />
       <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
-    </main>
+      <main>
+        <Hero />
+        <Cases />
+        <div className="wrap">
+          <Projects />
+          <Stack />
+          <About />
+          <Contact />
+          <Footer />
+        </div>
+      </main>
+    </LanguageProvider>
   );
 };
 
