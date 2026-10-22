@@ -6,27 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elias Garcia — Integrações, causa-raiz e arquitetura de sistemas</title>
   <meta name="description"
-    content="Desenvolvedor de sistemas em Maringá-PR. Integrações corporativas, análise de causa-raiz e arquitetura: instrumentar, correlacionar e mostrar a evidência. TypeScript, Node, Python, Cloudflare Workers, PostgreSQL." />
+    content="Desenvolvedor de sistemas em Maringá-PR: integrações corporativas, análise de causa-raiz e arquitetura. Instrumento, correlaciono e mostro a evidência." />
   <meta name="author" content="Elias Victor Rocha Garcia" />
-  <meta name="keywords"
-    content="desenvolvedor de sistemas, integração ERP, causa-raiz, observabilidade, logging estruturado, TypeScript, Node.js, Python, Cloudflare Workers, PostgreSQL, Maringá" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="theme-color" content="#fcfcfc" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)" />
 
-  <!-- Favicon -->
+  <!-- Ícones -->
   <link rel="icon" type="image/png" href="./src/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./src/assets/favicon.png" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="profile" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="Elias Garcia" />
   <meta property="og:title" content="Elias Garcia — Eu acho o que os outros não acham" />
   <meta property="og:description"
     content="Integrações corporativas, causa-raiz e arquitetura de sistemas. Instrumento, correlaciono e mostro a evidência." />
-  <meta property="og:url" content="https://elias-vrg-portifolio.vercel.app" />
+  <meta property="og:url" content="https://elias-vrg-portifolio.vercel.app/" />
   <meta property="og:image" content="https://elias-vrg-portifolio.vercel.app/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Eu acho o que os outros não acham — Elias Garcia, desenvolvedor de sistemas" />
+  <meta property="profile:first_name" content="Elias" />
+  <meta property="profile:last_name" content="Garcia" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -34,11 +39,89 @@
   <meta name="twitter:description"
     content="Integrações corporativas, causa-raiz e arquitetura de sistemas." />
   <meta name="twitter:image" content="https://elias-vrg-portifolio.vercel.app/og-image.png" />
+  <meta name="twitter:image:alt" content="Eu acho o que os outros não acham — Elias Garcia, desenvolvedor de sistemas" />
 
-  <link rel="canonical" href="https://elias-vrg-portifolio.vercel.app" />
+  <link rel="canonical" href="https://elias-vrg-portifolio.vercel.app/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!--
+    Dados estruturados: fatos estáveis (quem, onde, links, competências).
+    Fica estático aqui de propósito — assim vale para quem rastreia sem rodar JS.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://elias-vrg-portifolio.vercel.app/#elias",
+        "name": "Elias Victor Rocha Garcia",
+        "alternateName": "Elias Garcia",
+        "jobTitle": "Desenvolvedor de sistemas",
+        "description": "Desenvolvedor de sistemas especializado em integrações corporativas, análise de causa-raiz e arquitetura. Instrumenta o fluxo, correlaciona as pontas e prova onde está o problema antes de alterar código.",
+        "url": "https://elias-vrg-portifolio.vercel.app/",
+        "image": "https://elias-vrg-portifolio.vercel.app/elias-retrato.jpeg",
+        "email": "eliasvictor2452@gmail.com",
+        "telephone": "+5544997108065",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Maringá",
+          "addressRegion": "PR",
+          "addressCountry": "BR"
+        },
+        "knowsLanguage": [
+          { "@type": "Language", "name": "Português", "alternateName": "pt-BR" },
+          { "@type": "Language", "name": "Inglês", "alternateName": "en" }
+        ],
+        "knowsAbout": [
+          "Integração de sistemas corporativos",
+          "Análise de causa-raiz",
+          "Observabilidade",
+          "Logging estruturado",
+          "Arquitetura de sistemas",
+          "TypeScript",
+          "Node.js",
+          "Python",
+          "PHP",
+          "SQL",
+          "PostgreSQL",
+          "Oracle Database",
+          "Redis",
+          "BullMQ",
+          "Cloudflare Workers",
+          "React",
+          "Svelte",
+          "Docker"
+        ],
+        "sameAs": [
+          "https://github.com/EliasVRG",
+          "https://www.linkedin.com/in/elias-victor-rocha-garcia-00243521b/",
+          "https://www.npmjs.com/package/img-sanitizer"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://elias-vrg-portifolio.vercel.app/#site",
+        "url": "https://elias-vrg-portifolio.vercel.app/",
+        "name": "Elias Garcia",
+        "inLanguage": "pt-BR",
+        "publisher": { "@id": "https://elias-vrg-portifolio.vercel.app/#elias" }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://elias-vrg-portifolio.vercel.app/#page",
+        "url": "https://elias-vrg-portifolio.vercel.app/",
+        "name": "Elias Garcia — Integrações, causa-raiz e arquitetura de sistemas",
+        "inLanguage": "pt-BR",
+        "isPartOf": { "@id": "https://elias-vrg-portifolio.vercel.app/#site" },
+        "about": { "@id": "https://elias-vrg-portifolio.vercel.app/#elias" },
+        "mainEntity": { "@id": "https://elias-vrg-portifolio.vercel.app/#elias" }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>

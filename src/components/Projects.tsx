@@ -22,7 +22,7 @@ const Projects = () => {
             <div className="art art--screen">
               <img
                 src={project.art.src}
-                alt={project.art.alt}
+                alt={t(project.art.alt)}
                 width={1440}
                 height={900}
                 loading="lazy"
@@ -38,7 +38,8 @@ const Projects = () => {
                 } as CSSProperties
               }
             >
-              <div className="wordmark">
+              {/* O nome já está no h3 ao lado; aqui é tratamento visual. */}
+              <div className="wordmark" aria-hidden="true">
                 {project.name}
                 <small>{project.art.caption}</small>
               </div>

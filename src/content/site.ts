@@ -166,7 +166,7 @@ export type Project = {
   tags: string[];
   links: { label: L; href: string; muted?: boolean }[];
   art:
-    | { kind: 'screenshot'; src: string; alt: string }
+    | { kind: 'screenshot'; src: string; alt: L }
     | { kind: 'wordmark'; caption: string; tint: string; ink: string };
 };
 
@@ -191,7 +191,14 @@ export const projects: Project[] = [
       },
       { label: { pt: 'GitHub ↗', en: 'GitHub ↗' }, href: 'https://github.com/EliasVRG/my-library' },
     ],
-    art: { kind: 'screenshot', src: myLibraryShot, alt: 'my-library' },
+    art: {
+      kind: 'screenshot',
+      src: myLibraryShot,
+      alt: {
+        pt: 'Tela do my-library: a estante com oito livros, progresso de leitura por página e filtros por categoria.',
+        en: 'The my-library screen: a shelf of eight books with per-page reading progress and category filters.',
+      },
+    },
   },
   {
     id: 'lead-hunter',
