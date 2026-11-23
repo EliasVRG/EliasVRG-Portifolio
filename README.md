@@ -4,7 +4,7 @@
 
 Portfólio pessoal em uma página, bilíngue (pt-BR / EN), com foco nos casos de produção: integrações com ERPs, análise de causa-raiz e sistemas logísticos.
 
-🔗 **No ar:** [elias-vrg-portifolio.vercel.app](https://elias-vrg-portifolio.vercel.app)
+🔗 **No ar:** [elias-vrg-portfolio.vercel.app](https://elias-vrg-portfolio.vercel.app)
 
 ## Stack
 

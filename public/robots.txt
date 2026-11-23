@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://elias-vrg-portifolio.vercel.app/sitemap.xml
+Sitemap: https://elias-vrg-portfolio.vercel.app/sitemap.xml
