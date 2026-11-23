@@ -2,7 +2,7 @@
 
 > **"Eu acho o que os outros não acham."**
 
-Portfólio pessoal em uma página, bilíngue (pt-BR / EN), com foco nos casos de produção: integrações corporativas, análise de causa-raiz e arquitetura de sistemas.
+Portfólio pessoal em uma página, bilíngue (pt-BR / EN), com foco nos casos de produção: integrações com ERPs, análise de causa-raiz e sistemas logísticos.
 
 🔗 **No ar:** [elias-vrg-portifolio.vercel.app](https://elias-vrg-portifolio.vercel.app)
 
@@ -21,8 +21,8 @@ Todo o texto do site está em **[`src/content/site.ts`](src/content/site.ts)**, 
 
 ```ts
 lead: {
-  pt: 'Encontra vagas freelance publicadas...',
-  en: 'Finds published freelance jobs...',
+  pt: 'Biblioteca pessoal de PDFs...',
+  en: 'A personal PDF library...',
 },
 ```
 

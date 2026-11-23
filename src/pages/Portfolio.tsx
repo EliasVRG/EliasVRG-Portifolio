@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import About from '../components/About';
 import Cases from '../components/Cases';
 import Contact from '../components/Contact';
+import Experience from '../components/Experience';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -61,6 +62,7 @@ const Portfolio = () => {
         <Hero />
         <Cases />
         <div className="wrap">
+          <Experience />
           <Projects />
           <Stack />
           <About />
