@@ -12,25 +12,26 @@ export const identity = {
   location: 'Maringá, PR — BR',
   github: 'https://github.com/EliasVRG',
   eyebrow: {
-    pt: 'Desenvolvedor de sistemas · Maringá, PR · remoto',
-    en: 'Systems developer · Maringá, PR · remote',
+    pt: 'Desenvolvedor Full Stack · Maringá, PR · presencial, híbrido ou remoto',
+    en: 'Full-stack developer · Maringá, PR · on-site, hybrid or remote',
   } satisfies L,
 };
 
 /** Título e descrição da aba acompanham o idioma escolhido. */
 export const meta = {
   title: {
-    pt: 'Elias Garcia — Integrações, causa-raiz e arquitetura de sistemas',
-    en: 'Elias Garcia — Integrations, root cause and systems architecture',
+    pt: 'Elias Garcia — Integrações com ERPs, causa-raiz e sistemas logísticos',
+    en: 'Elias Garcia — ERP integrations, root cause and logistics systems',
   } satisfies L,
   description: {
-    pt: 'Desenvolvedor de sistemas em Maringá-PR. Integrações corporativas, análise de causa-raiz e arquitetura: instrumentar, correlacionar e mostrar a evidência.',
-    en: 'Systems developer based in Maringá, Brazil. Enterprise integrations, root-cause analysis and architecture: instrument, correlate and show the evidence.',
+    pt: 'Desenvolvedor Full Stack em Maringá-PR. Responsável por integrações com ERPs (SAP, Senior Sapiens, Google Pub/Sub) em um ERP logístico: crio o padrão, a ferramenta e, quando quebra, mostro a evidência.',
+    en: 'Full-stack developer based in Maringá, Brazil. I own ERP integrations (SAP, Senior Sapiens, Google Pub/Sub) in a logistics ERP: I set the standard, build the tooling and, when it breaks, show the evidence.',
   } satisfies L,
 };
 
 export const nav: { id: string; label: L }[] = [
   { id: 'casos', label: { pt: 'Casos', en: 'Cases' } },
+  { id: 'experiencia', label: { pt: 'Experiência', en: 'Experience' } },
   { id: 'projetos', label: { pt: 'Projetos', en: 'Projects' } },
   { id: 'stack', label: { pt: 'Stack', en: 'Stack' } },
   { id: 'sobre', label: { pt: 'Sobre', en: 'About' } },
@@ -44,8 +45,8 @@ export const hero = {
     en: ['I find', 'what others', 'miss'],
   },
   sub: {
-    pt: 'Integrações corporativas, causa-raiz e arquitetura de sistemas. **Instrumento, correlaciono e mostro a evidência** — em vez de trocar código no escuro.',
-    en: 'Enterprise integrations, root cause and systems architecture. **I instrument, correlate and show the evidence** — instead of swapping code in the dark.',
+    pt: 'Assumo integrações com ERPs de ponta a ponta em sistemas logísticos: **crio o padrão, a ferramenta e, quando quebra, mostro a evidência** — em vez de trocar código no escuro.',
+    en: 'I own ERP integrations end to end in logistics systems: **I set the standard, build the tooling and, when it breaks, show the evidence** — instead of swapping code in the dark.',
   } satisfies L,
 };
 
@@ -106,8 +107,8 @@ export const cases: Case[] = [
       en: 'ERP ↔ external system integration',
     },
     action: {
-      pt: 'Instrumentei o fluxo com **logging estruturado e correlationId** ponta a ponta. Com as duas pontas correlacionáveis, o ponto da perda apareceu no primeiro dia de tráfego real — e a correção foi pontual, sem reescrever a integração.',
-      en: 'I instrumented the flow with **structured logging and a correlationId** end to end. Once both ends could be correlated, the point of loss showed up on the first day of real traffic — and the fix was targeted, with no rewrite.',
+      pt: 'Instrumentei o fluxo com **logging estruturado e correlationId** cruzando entrada e saída. Com as duas pontas correlacionadas, a causa apareceu do nosso lado: uma chamada incorreta na nossa própria API. Evidência na mesa, discussão encerrada em dias.',
+      en: 'I instrumented the flow with **structured logging and a correlationId** linking requests in and out. With both ends correlated, the cause turned out to be on our side: an incorrect call in our own API. Evidence on the table, debate closed in days.',
     },
     metric: {
       value: { pt: '3 meses → dias', en: '3 months → days' },
@@ -124,12 +125,12 @@ export const cases: Case[] = [
       en: 'The loop nobody owned',
     },
     tag: {
-      pt: 'Gravações sem origem conhecida',
-      en: 'Writes from an unknown source',
+      pt: 'Reprocessamento em integração com ERP',
+      en: 'Reprocessing in an ERP integration',
     },
     action: {
-      pt: '**Análise de padrão nos logs** — horário, intervalo e repetição de payload. O espaçamento constante entre as gravações entregou o gatilho: um evento que reenfileirava a si mesmo a cada processamento.',
-      en: '**Pattern analysis on the logs** — timestamps, intervals and payload repetition. The constant spacing between writes gave away the trigger: an event re-enqueuing itself on every pass.',
+      pt: 'Clientes relatavam duplicidade e lentidão. Com **análise de padrão nos logs** e no fluxo de reenvio, achei o gatilho: um campo específico da resposta que mandava reprocessar tudo de novo. Reestruturei a sincronização para tratar só o que estava de fato pendente.',
+      en: 'Customers reported duplicates and slowness. With **pattern analysis on the logs** and the resend flow, I found the trigger: a specific response field that sent everything back for reprocessing. I restructured the sync to handle only what was actually pending.',
     },
     metric: {
       value: { pt: '33.000 → 0', en: '33,000 → 0' },
@@ -143,19 +144,115 @@ export const cases: Case[] = [
       en: "The bug that wasn't",
     },
     tag: {
-      pt: 'Chamado de perda de mensagens no pub/sub',
-      en: 'Pub/sub message-loss ticket',
+      pt: 'Chamado de status não atualizado no Pub/Sub',
+      en: 'Pub/Sub "status not updated" ticket',
     },
     action: {
-      pt: 'Reproduzi o cenário e reconstruí a **linha do tempo pelos logs dos dois lados**. Todas as mensagens chegavam: o consumidor filtrava por um campo que vinha vazio da origem. O ajuste foi no dado, não no código.',
-      en: 'I reproduced the scenario and rebuilt the **timeline from logs on both sides**. Every message arrived: the consumer filtered on a field that came in empty from the source. The fix went into the data, not the code.',
+      pt: 'O chamado dizia que o status não atualizava, sem erro nenhum. Reconstruí a **linha do tempo pelos logs do container**, descartei o escopo inflado e achei a causa: um conflito operacional, não um bug. Chamado encerrado em horas, sem mexer em produção.',
+      en: 'The ticket said the status wasn\'t updating, with no error at all. I rebuilt the **timeline from the container logs**, ruled out the inflated scope and found the cause: an operational conflict, not a bug. Ticket closed in hours, without touching production code.',
     },
     metric: {
       value: { pt: '0', en: '0' },
       caption: { pt: 'linhas de código alteradas', en: 'lines of code changed' },
     },
   },
+  {
+    no: '04',
+    title: {
+      pt: 'O gargalo que virou ferramenta',
+      en: 'The bottleneck that became a tool',
+    },
+    tag: {
+      pt: 'Configuração do Oracle em produção',
+      en: 'Oracle configuration in production',
+    },
+    action: {
+      pt: 'Criar tabelas, índices e componentes e liberá-los para os usuários dependia de poucas pessoas. Por iniciativa própria, criei um **console em Go com salvaguardas**: transação com rollback, modo de simulação, SQL de reversão gerado junto, bind em todos os valores, DDL só por lista de permissões e revisão antes de gravar.',
+      en: 'Creating tables, indexes and components and releasing them to users depended on a handful of people. On my own initiative I built a **Go console with safeguards**: transactions with rollback, a dry-run mode, generated revert SQL, bound values everywhere, allow-listed DDL and a review step before writing.',
+    },
+    metric: {
+      value: { pt: 'rollback', en: 'rollback' },
+      caption: {
+        pt: 'em toda alteração, com SQL de reversão gerado',
+        en: 'on every change, with generated revert SQL',
+      },
+    },
+  },
 ];
+
+export type Job = {
+  role: L;
+  company: string;
+  period: L;
+  points: L[];
+};
+
+export const experience = {
+  title: { pt: 'Experiência', en: 'Experience' } satisfies L,
+  cv: {
+    label: { pt: 'Baixar currículo (PDF) ↓', en: 'Download CV (PDF, Portuguese) ↓' } satisfies L,
+    href: '/curriculo-elias-garcia.pdf',
+  },
+  jobs: [
+    {
+      role: { pt: 'Desenvolvedor Full Stack', en: 'Full-stack developer' },
+      company: 'Vertti Tecnologia',
+      period: { pt: 'set/2024 – atual', en: 'Sep 2024 – present' },
+      points: [
+        {
+          pt: 'ERP logístico com **NestJS, PHP, React/TypeScript e Oracle SQL**, do banco à interface.',
+          en: 'Logistics ERP built with **NestJS, PHP, React/TypeScript and Oracle SQL**, from database to UI.',
+        },
+        {
+          pt: 'Responsável pelo **domínio de integrações** com ERPs e serviços externos (SAP, Senior Sapiens, Google Pub/Sub): padrão de retorno adotado pelo time, guia técnico e simulador de integrações.',
+          en: 'Owner of the **integrations domain** with ERPs and external services (SAP, Senior Sapiens, Google Pub/Sub): a response standard the team adopted, a technical guide and an integration simulator.',
+        },
+        {
+          pt: 'Módulo de log com **classificador de erros** que indica quem resolve cada falha (cliente, TI do cliente ou time interno) e permite o reenvio.',
+          en: 'Logging module with an **error classifier** that says who fixes each failure (the customer, their IT or our team) and allows resending.',
+        },
+        {
+          pt: 'Funcionalidades completas sozinho, do SQL à interface, com **testes unitários (Jest)**.',
+          en: 'Complete features on my own, from SQL to UI, with **unit tests (Jest)**.',
+        },
+        {
+          pt: 'Maior parte das **promoções de release** entre ambientes em 2026 e CI com GitHub Actions para sincronização entre ambientes.',
+          en: 'Most of the **release promotions** across environments in 2026, plus GitHub Actions CI to keep environments in sync.',
+        },
+        {
+          pt: '**Revisão de código** de 15 colegas, com orientação técnica a desenvolvedores menos experientes.',
+          en: '**Code review** for 15 colleagues, with technical guidance for less experienced developers.',
+        },
+        {
+          pt: 'Biblioteca compartilhada de logs em monorepo (Turborepo) com Redis e monitoramento de erros em produção com Bugsink.',
+          en: 'Shared logging library in a monorepo (Turborepo) with Redis, and production error monitoring with Bugsink.',
+        },
+      ],
+    },
+    {
+      role: { pt: 'Assistente de Desenvolvimento de Sistemas', en: 'Systems development assistant' },
+      company: 'Transpanorama Transportes',
+      period: { pt: 'fev/2024 – set/2024', en: 'Feb 2024 – Sep 2024' },
+      points: [
+        {
+          pt: 'RPAs com Python e Selenium, APIs REST, servidores Linux com Nginx, dashboards de BI no Qlik Sense e consultas SQL.',
+          en: 'RPAs with Python and Selenium, REST APIs, Linux servers with Nginx, BI dashboards in Qlik Sense and SQL queries.',
+        },
+      ],
+    },
+    {
+      role: { pt: 'Assistente e Auxiliar de Logística', en: 'Logistics assistant' },
+      company: 'Transpanorama Transportes',
+      period: { pt: 'mar/2022 – jan/2024', en: 'Mar 2022 – Jan 2024' },
+      points: [
+        {
+          pt: 'Emissão de CT-e e carta frete, programação de créditos, rotas e macros no ERP para a folha de pagamento — **a operação que hoje ajudo a automatizar**.',
+          en: 'Issued CT-e (electronic waybills) and freight letters, scheduled credits and routes, and built ERP macros for payroll — **the operation I now help automate**.',
+        },
+      ],
+    },
+  ] satisfies Job[],
+};
 
 export type Project = {
   id: string;
@@ -201,28 +298,6 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'lead-hunter',
-    name: 'lead-hunter',
-    lead: {
-      pt: 'Encontra vagas freelance publicadas, mede a compatibilidade com o currículo e escreve o rascunho da proposta. Nada sai sozinho: você revisa e envia.',
-      en: 'Finds published freelance jobs, scores how well each matches the CV and drafts the proposal. Nothing goes out on its own: you review and send.',
-    },
-    deep: {
-      pt: 'Uma fila por estágio, para dar para ver onde o trabalho parou. **Filtro determinístico antes da IA**, score recalculado pelo sistema, parsers testados contra fixtures reais e agendador idempotente. Custo de operação: zero.',
-      en: 'One queue per stage, so you can see where work is stuck. **Deterministic filter before the AI**, score recomputed by the system, parsers tested against real fixtures and an idempotent scheduler. Operating cost: zero.',
-    },
-    tags: ['TypeScript', 'Fastify', 'BullMQ', 'Redis', 'Cheerio', 'OpenRouter', 'Vitest'],
-    links: [
-      { label: { pt: 'GitHub ↗', en: 'GitHub ↗' }, href: 'https://github.com/EliasVRG/lead-hunter' },
-    ],
-    art: {
-      kind: 'wordmark',
-      caption: 'discovery → triage → proposal',
-      tint: '#F0EEFA',
-      ink: '#36307A',
-    },
-  },
-  {
     id: 'img-sanitizer',
     name: 'img-sanitizer',
     lead: {
@@ -248,62 +323,39 @@ export const projects: Project[] = [
     ],
     art: { kind: 'wordmark', caption: '★ 5 · npm · MIT', tint: '#FAF2E4', ink: '#6A4A12' },
   },
-  {
-    id: 'web-perf-monitor',
-    name: 'web-perf-monitor',
-    lead: {
-      pt: 'Monitora performance e postura de segurança de várias URLs e correlaciona as duas coisas em incidentes acionáveis.',
-      en: 'Monitors performance and security posture across many URLs and correlates both into actionable incidents.',
-    },
-    deep: {
-      pt: 'Core Web Vitals via Playwright, varredura passiva de cabeçalhos e **baselines estatísticas de 2h e 7d** para detectar anomalia — com alerta que já sugere a causa provável.',
-      en: 'Core Web Vitals via Playwright, passive header scanning and **2h and 7d statistical baselines** for anomaly detection — with alerts that already suggest a likely cause.',
-    },
-    tags: ['Python', 'Playwright', 'Clean Architecture'],
-    links: [
-      {
-        label: { pt: 'GitHub ↗', en: 'GitHub ↗' },
-        href: 'https://github.com/EliasVRG/web-perf-monitor',
-      },
-    ],
-    art: {
-      kind: 'wordmark',
-      caption: 'core web vitals + incidentes',
-      tint: '#EDEFF2',
-      ink: '#30353C',
-    },
-  },
 ];
 
 export const stack = {
   eyebrow: { pt: 'Stack em uso hoje', en: 'Stack in use today' } satisfies L,
   items: [
     'TypeScript',
-    'Python',
     'PHP',
-    'SQL',
+    'Go',
+    'Python',
+    'NestJS',
     'Node.js',
-    'Fastify',
-    'Hono',
-    'Flask',
-    'Laravel',
     'React',
     'Svelte 5',
-    'Tailwind',
-    'PostgreSQL',
-    'Oracle',
+    'Hono',
+    'Flask',
+    'Oracle SQL',
     'MySQL',
+    'PostgreSQL',
     'Redis',
-    'BullMQ',
     'D1',
     'R2',
     'IndexedDB',
     'Cloudflare Workers',
-    'Docker',
-    'Vercel',
+    'Google Pub/Sub',
+    'SAP',
+    'Senior Sapiens',
+    'GitHub Actions',
+    'Turborepo',
+    'Jest',
     'Vitest',
-    'Playwright',
-    'Cheerio',
+    'Bugsink',
+    'Linux',
+    'Nginx',
   ],
   last: { pt: 'logging estruturado', en: 'structured logging' } satisfies L,
 };
@@ -312,29 +364,36 @@ export const about = {
   title: { pt: 'Sobre', en: 'About' } satisfies L,
   paragraphs: [
     {
-      pt: 'Trabalho com integrações corporativas e sistemas que já estão rodando. **Meu trabalho começa antes do código:** instrumentar, correlacionar e provar — porque em produção a parte difícil é descobrir onde o problema está, não escrever a correção.',
-      en: 'I work on enterprise integrations and systems that are already running. **My work starts before the code:** instrument, correlate, prove — because in production the hard part is finding where the problem is, not writing the fix.',
+      pt: 'Antes de programar, trabalhei na operação de logística: emiti CT-e e carta frete e programei rotas e créditos de motoristas. Hoje desenvolvo um ERP para esse mesmo tipo de operação, e **conhecer o dia a dia de quem usa o sistema pesa nas decisões que tomo**.',
+      en: 'Before I wrote code, I worked in logistics operations: issuing waybills and freight letters, planning routes and driver credits. Today I build an ERP for that same kind of operation, and **knowing the day-to-day of the people using it shapes my decisions**.',
     },
     {
-      pt: 'Foi assim com uma integração ERP havia **três meses** em disputa entre duas equipes, com um loop que gravava **33 mil registros por dia** sem dono e com um chamado de pub/sub que terminou **sem nenhuma alteração de código** — porque não havia bug, havia um contrato de dado quebrado.',
-      en: 'That\'s how it went with an ERP integration two teams had been blaming each other for over **three months**, a loop writing **33,000 records a day** with no owner, and a pub/sub ticket that ended **with no code change at all** — because there was no bug, there was a broken data contract.',
+      pt: 'Na Vertti, assumi o domínio de integrações: defini o padrão que o time segue, escrevi o guia e construí as ferramentas de diagnóstico. **Meu trabalho começa antes do código:** instrumentar, correlacionar e provar — porque em produção a parte difícil é descobrir onde o problema está, não escrever a correção.',
+      en: 'At Vertti I took ownership of the integrations domain: I set the standard the team follows, wrote the guide and built the diagnostic tooling. **My work starts before the code:** instrument, correlate, prove — because in production the hard part is finding where the problem is, not writing the fix.',
     },
     {
-      pt: 'Nos projetos pessoais a régua é a mesma: fila por estágio para enxergar onde o trabalho parou, filtro determinístico antes de gastar IA, parser testado contra fixture real, agendador que pode rodar duas vezes sem estragar nada.',
-      en: 'The same bar applies to my own projects: one queue per stage so you can see where work stopped, a deterministic filter before spending AI, parsers tested against real fixtures, a scheduler that can run twice without breaking anything.',
+      pt: 'Foi assim com uma integração ERP travada havia **três meses**, com um loop que reprocessava **33 mil registros por dia** e com um chamado de Pub/Sub que terminou **sem nenhuma alteração de código** — porque não havia bug, havia um conflito operacional.',
+      en: 'That\'s how it went with an ERP integration stuck for **three months**, a loop reprocessing **33,000 records a day**, and a Pub/Sub ticket that ended **with no code change at all** — because there was no bug, there was an operational conflict.',
+    },
+    {
+      pt: 'Nos projetos pessoais a régua é a mesma: sincronização offline que não perde dado quando dois aparelhos editam a mesma coisa, imagem validada antes de entrar no pipeline, testes antes de publicar. Uso IA no desenvolvimento (Claude Code) com regras de projeto que defini para o time.',
+      en: 'The same bar applies to my own projects: offline sync that doesn\'t lose data when two devices edit the same thing, images validated before they enter the pipeline, tests before publishing. I use AI in development (Claude Code) with project rules I wrote for the team.',
     },
   ] satisfies L[],
   facts: [
     {
       label: { pt: 'Experiência', en: 'Experience' },
-      value: { pt: '3+ anos em produção', en: '3+ yrs in production' },
+      value: { pt: 'quase 3 anos em produção', en: 'almost 3 yrs in production' },
     },
     {
       label: { pt: 'Base', en: 'Based in' },
       value: { pt: 'Maringá, PR — BR', en: 'Maringá, PR — BR' },
     },
-    { label: { pt: 'Modelo', en: 'Work' }, value: { pt: 'Remoto', en: 'Remote' } },
-    { label: { pt: 'Idiomas', en: 'Languages' }, value: { pt: 'pt-BR · EN', en: 'pt-BR · EN' } },
+    {
+      label: { pt: 'Modelo', en: 'Work' },
+      value: { pt: 'Presencial · híbrido · remoto', en: 'On-site · hybrid · remote' },
+    },
+    { label: { pt: 'Idiomas', en: 'Languages' }, value: { pt: 'pt-BR · EN (leitura técnica)', en: 'pt-BR · EN (technical reading)' } },
     {
       label: { pt: 'Open source', en: 'Open source' },
       value: { pt: 'img-sanitizer · ★5', en: 'img-sanitizer · ★5' },
@@ -344,7 +403,7 @@ export const about = {
 };
 
 export const contact = {
-  eyebrow: { pt: 'Aberto a propostas', en: 'Open to work' } satisfies L,
+  eyebrow: { pt: 'Contato', en: 'Contact' } satisfies L,
   title: { pt: 'Vamos conversar.', en: "Let's talk." } satisfies L,
   links: [
     { who: 'WhatsApp', value: '+55 44 99710-8065', href: 'https://wa.me/5544997108065' },
