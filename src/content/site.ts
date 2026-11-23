@@ -107,8 +107,8 @@ export const cases: Case[] = [
       en: 'ERP ↔ external system integration',
     },
     action: {
-      pt: 'Instrumentei o fluxo com **logging estruturado e correlationId** cruzando entrada e saída. Com as duas pontas correlacionadas, a causa apareceu do nosso lado: uma chamada incorreta na nossa própria API. Evidência na mesa, discussão encerrada em dias.',
-      en: 'I instrumented the flow with **structured logging and a correlationId** linking requests in and out. With both ends correlated, the cause turned out to be on our side: an incorrect call in our own API. Evidence on the table, debate closed in days.',
+      pt: 'O outro lado garantia que a homologação era igual à produção — e, como em produção funcionava, o problema seria nosso. Não guardávamos quais requisições chegavam ao servidor para contestar. Ativei a **captura temporária de tudo o que chegava**, cruzei com o histórico do usuário e provei: a homologação deles nunca enviava a requisição.',
+      en: 'The other side insisted their staging matched production — and since production worked, the problem had to be ours. We had no record of which requests actually reached our server. I turned on **temporary capture of everything coming in**, cross-checked it against the user\'s history and proved it: their staging never sent the request.',
     },
     metric: {
       value: { pt: '3 meses → dias', en: '3 months → days' },
