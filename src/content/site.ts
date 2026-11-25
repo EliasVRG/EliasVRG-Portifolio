@@ -20,12 +20,12 @@ export const identity = {
 /** Título e descrição da aba acompanham o idioma escolhido. */
 export const meta = {
   title: {
-    pt: 'Elias Garcia — Integrações com ERPs, causa-raiz e sistemas logísticos',
-    en: 'Elias Garcia — ERP integrations, root cause and logistics systems',
+    pt: 'Elias Garcia — APIs, integrações entre sistemas e causa-raiz',
+    en: 'Elias Garcia — APIs, system integrations and root cause',
   } satisfies L,
   description: {
-    pt: 'Desenvolvedor Full Stack em Maringá-PR. Responsável por integrações com ERPs (SAP, Senior Sapiens, Google Pub/Sub) em um ERP logístico: crio o padrão, a ferramenta e, quando quebra, mostro a evidência.',
-    en: 'Full-stack developer based in Maringá, Brazil. I own ERP integrations (SAP, Senior Sapiens, Google Pub/Sub) in a logistics ERP: I set the standard, build the tooling and, when it breaks, show the evidence.',
+    pt: 'Desenvolvedor Full Stack em Maringá-PR. Desenvolvo e consumo APIs REST e mensageria para integrar um ERP logístico a plataformas como SAP e Senior Sapiens: crio o padrão, a ferramenta e, quando quebra, mostro a evidência.',
+    en: 'Full-stack developer based in Maringá, Brazil. I build and consume REST APIs and messaging to connect a logistics ERP to platforms such as SAP and Senior Sapiens: I set the standard, build the tooling and, when it breaks, show the evidence.',
   } satisfies L,
 };
 
@@ -45,8 +45,8 @@ export const hero = {
     en: ['I find', 'what others', 'miss'],
   },
   sub: {
-    pt: 'Assumo integrações com ERPs de ponta a ponta em sistemas logísticos: **crio o padrão, a ferramenta e, quando quebra, mostro a evidência** — em vez de trocar código no escuro.',
-    en: 'I own ERP integrations end to end in logistics systems: **I set the standard, build the tooling and, when it breaks, show the evidence** — instead of swapping code in the dark.',
+    pt: 'Construo APIs e integrações entre sistemas em um ERP logístico: **crio o padrão, a ferramenta e, quando quebra, mostro a evidência** — em vez de trocar código no escuro.',
+    en: 'I build APIs and system integrations for a logistics ERP: **I set the standard, build the tooling and, when it breaks, show the evidence** — instead of swapping code in the dark.',
   } satisfies L,
 };
 
@@ -204,8 +204,8 @@ export const experience = {
           en: 'Logistics ERP built with **NestJS, PHP, React/TypeScript and Oracle SQL**, from database to UI.',
         },
         {
-          pt: 'Responsável pelo **domínio de integrações** com ERPs e serviços externos (SAP, Senior Sapiens, Google Pub/Sub): padrão de retorno adotado pelo time, guia técnico e simulador de integrações.',
-          en: 'Owner of the **integrations domain** with ERPs and external services (SAP, Senior Sapiens, Google Pub/Sub): a response standard the team adopted, a technical guide and an integration simulator.',
+          pt: 'Responsável pelas **integrações com plataformas externas**: desenvolvo e consumo APIs REST e mensageria (Google Pub/Sub) para conectar o ERP logístico a sistemas como SAP e Senior Sapiens. Padrão de retorno adotado pelo time, guia técnico e simulador de integrações.',
+          en: 'Owner of **integrations with external platforms**: I build and consume REST APIs and messaging (Google Pub/Sub) to connect the logistics ERP to systems such as SAP and Senior Sapiens. A response standard the team adopted, a technical guide and an integration simulator.',
         },
         {
           pt: 'Módulo de log com **classificador de erros** que indica quem resolve cada falha (cliente, TI do cliente ou time interno) e permite o reenvio.',
@@ -347,8 +347,8 @@ export const stack = {
     'IndexedDB',
     'Cloudflare Workers',
     'Google Pub/Sub',
-    'SAP',
-    'Senior Sapiens',
+    'APIs REST',
+    'Webhooks',
     'GitHub Actions',
     'Turborepo',
     'Jest',
